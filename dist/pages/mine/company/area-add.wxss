@@ -1,0 +1,2 @@
+@import "./../../../components/zan-toptips.wxss";
+.footer-button{position:absolute;width:100%;bottom:0}.citypicker{position:absolute;bottom:0;width:100%}.cityheader{background-color:#ffffff}.cityheader .weui-form-preview__btn:after{border-left:none}

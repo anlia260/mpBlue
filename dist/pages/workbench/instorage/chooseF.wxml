@@ -1,0 +1,22 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- input tab -->
+        <view>
+            <view class="zan-panel">
+                <view class="zan-cell zan-form__item">
+                    <input bindinput="code" focus="{{focusinfo}}" value="{{barCodeinfo}}" class="zan-form__input zan-cell__bd" placeholder="填写容器、托盘、库位编号"/>
+                </view>
+            </view>
+            <view style="margin-top:10px">
+              <view class="zan-cell__bd zan-link zan-c-blue" bindtap="scanQr">切换成扫描模式</view>
+              <view class="zan-cell__ft zan-link zan-c-blue" bindtap="getEmpty">空闲位置 </view>
+            </view> 
+             <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+                <button class="weui-btn  primary" bindtap="checkDevice">确认</button>
+            </view>
+
+        </view>
+    </view>

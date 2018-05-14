@@ -1,0 +1,1 @@
+.thumb{float:left}.thumb,.img{width:50px;height:50px}.zan-card__detail{margin-left:0;width:100%}.zan-card__detail .zan-card__detail-row{height:25px;line-height:25px}.zan-card__left-col{margin-right:0}.zan-card__right-col{width:75%;overflow:hidden;text-overflow:ellipsis;word-wrap:break-word;word-break:break-all;text-align:right}.zan-cell{padding:5px 15px}

@@ -1,0 +1,56 @@
+
+    <view class="container">
+        <view class="zan-panel">
+            <view class="zan-cell">
+                <view class="zan-cell__bd"><view class="weui-media-box_appmsg">
+                    <view class="weui-media-box__hd icon">
+                        <image class="weui-media-box__thumb" src="../../../static/images/nav/card-new.png"/>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title"/>
+                        <view class="weui-media-box__desc">来自：{{entrust.createTime}} - {{entrust.expireTime}}的委托</view>
+                    </view>
+                </view></view>
+                <view class="zan-cell__ft"/>
+            </view>
+            <view class="zan-cell">
+                <view class="zan-cell__bd">
+                    <view class="weui-form-preview__bd">
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">工作地址</view>
+                            <view class="weui-form-preview__value">{{entrust.addressName}}</view>
+                        </view>
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">工作时间</view>
+                            <view class="weui-form-preview__value">{{entrust.workContent}}</view>
+                        </view>
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">耗时</view>
+                            <view class="weui-form-preview__value"/>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="zan-cell zan-cell--access" bindtap="workRecord">
+                <view class="zan-cell__bd">我的工作明细</view>
+                <view class="zan-cell__ft"/>
+            </view>
+            <view class="zan-cell">
+                <view class="zan-cell__bd">工作所属</view>
+                <view class="zan-cell__ft">公司</view>
+            </view>
+            <view class="zan-cell">
+                <view class="zan-cell__bd">创建时间</view>
+                <view class="zan-cell__ft">公司</view>
+            </view>
+            <view class="zan-cell">
+                <view class="zan-cell__bd">委托单编号</view>
+                <view class="zan-cell__ft">公司</view>
+            </view>
+            <view class="zan-cell">
+                <view class="zan-cell__bd">入库单编号</view>
+                <view class="zan-cell__ft">公司</view>
+            </view>
+        </view>
+
+    </view>

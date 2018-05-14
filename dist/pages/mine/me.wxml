@@ -1,0 +1,47 @@
+
+  <view class="container page">
+
+     <view class="page__bd">
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                 <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{ userInfo.logoUrl }}"/>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">{{ userInfo.nickName }}</view>
+                        <view class="weui-media-box__desc">{{ userInfo.passport }}</view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="weui-panel__ft">
+                <view class="weui-cell weui-cell_access weui-cell_link">
+                    <view class="weui-cell__bd customFont labelinfo">性别</view>
+                    <view class="weui-cell__ft">{{userInfo.sex === 0 ? '未知' : userInfo.sex === 1 ? '男' : '女'}}</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-panel weui-panel_access">
+              <view class="weui-panel__ft">
+                  <view class="weui-cell weui-cell_access weui-cell_link">
+                      <view class="weui-cell__bd customFont labelinfo" style="white-space:nowrap;text-align:left;">昵称</view>
+                      <view class="weui-cell__ft" style="margin-left:16px;word-break:break-all;text-align:left;">{{ userInfo.nickName }}</view>
+                  </view>
+              </view>
+
+              <view class="weui-panel__ft">
+                  <view class="weui-cell weui-cell_access weui-cell_link">
+                      <view class="weui-cell__bd customFont labelinfo" style="white-space:nowrap;text-align:left;">签名</view>
+                      <view class="weui-cell__ft" style="margin-left:16px;word-break:break-all;text-align:left;">{{ userInfo.adverInfo }}</view>
+                  </view>
+              </view>
+        </view>
+         <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+            <button class="weui-btn  primary" bindtap="handleEdit">编辑</button>
+        </view> 
+        
+    </view>
+
+  </view>

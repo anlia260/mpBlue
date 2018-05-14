@@ -1,0 +1,58 @@
+
+  <view class="container page">
+    <view class="page__bd">
+      <form bindsubmit="handleSubmit" bindreset="formReset">
+        <view class="weui-panel weui-panel_access">
+          <view class="weui-panel__bd">
+            <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">企业名称</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input" name="companyName" value="{{addForm.companyName}}" bindinput="handleInputChange" placeholder="请输入企业名称" data-wpyhandleinputchange-a="companyName"/>
+                </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">简称</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input" name="exName" value="{{addForm.exName}}" bindinput="handleInputChange" placeholder="请输入企业简称" data-wpyhandleinputchange-a="exName"/>
+                </view>
+              </view>
+
+                <view class="weui-cells" style="margin-top:0">
+            <view class="weui-cell">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">LOGO</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files" id="uploaderFiles">
+                                    <view class="weui-uploader__file" bindtap="previewImage" id="{{addForm.logo.hash}}">
+                                        <image class="weui-uploader__img" src="{{addForm.logo.imageURL}}" mode="aspectFill"/>
+                                    </view>
+                            </view>
+                            <view  wx:if="{{!addForm.logo.hash}}" class="weui-uploader__input-box">
+                                <view class="weui-uploader__input" bindtap="chooseImage"/>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+            </view>
+          </view>
+        </view>
+         <view class="page__bd page__bd_spacing" style="margin-top:90px;">
+                <button formType="submit" class="weui-btn  primary">保存</button>
+        </view>
+         
+      </form>
+      
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+    </view>
+  </view>

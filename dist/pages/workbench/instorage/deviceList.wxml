@@ -1,0 +1,41 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+
+        <!-- input end -->
+        <!-- free tab -->
+        <view class="free-container">
+            <view class="zan-panel ">
+                <view class="zan-cell panneItle">
+                    <picker bindchange="bindAreaChange" range-key="areaName" range="{{areaList}}" style="width:100%">
+                           <view class="weui-panel weui-panel_access" style=" position: static;">
+                              <view class="weui-cell weui-cell_access weui-cell_link" style="padding-left:0;position: static;"> 
+                                  <view class="weui-cell__bd customFont"> {{areaList[areaSort].areaName}}</view>
+                                  <view class="weui-cell__ft weui-cell__ft_in-access"/>
+                              </view>
+                          </view> 
+                    </picker>
+                </view>
+            </view>
+
+            <!-- select-satrt -->
+            <view class="zan-select-list2">
+                <view class="zan-select-item"  wx:for="{{potisonList}}" wx:key="areaId" wx:for-item="item">
+                    <view class="zan-panel-title panneItle">{{item.positionSn}}</view>
+                    <view class="zan-panel"> 
+                        <view wx:for-item="jtem" wx:for="{{item.deviceVoList}}" wx:key="{{jtem.deviceSn}}">
+                            <view class="zan-cell  " style="line-height:0.8;  {{jtem.isVirtual === 2 ?'padding:3px 15px;':''}}">
+                                <icon wx:if="{{ jtem.deviceSn === barCode }}" type="success_no_circle" color="red" size="14"/>
+                                <view class="zan-cell__bd  {{jtem.deviceSn === barCode?'active':''}}" bindtap="bindDeviceChange" data-wpybinddevicechange-a="{{jtem}}" data-wpybinddevicechange-b="{{item}}">{{jtem.deviceSn}}</view>
+                                <view class="zan-cell__ft" wx:if="{{jtem.isVirtual === 2 }}" bindtap="unbind" data-wpyunbind-a="{{jtem}}" data-wpyunbind-b="{{item}}">
+                                  <button class="weui_btn weui_btn_mini titleinfo">不存在</button> 
+                                </view> 
+                            </view> 
+                        </view>
+                    </view>
+                </view>
+            </view> 
+        </view>
+    </view>

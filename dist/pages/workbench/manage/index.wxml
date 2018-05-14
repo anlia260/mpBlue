@@ -1,0 +1,21 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <view class="page__bd">
+            <view class="weui-panel weui-panel_access"  wx:for="{{menu}}" wx:key="index">
+                <view class="weui-panel__ft" wx:for="{{item.child}}" wx:for-item="childItem" wx:key="index">
+                    <navigator url="{{childItem.url}}">
+                        <view class="weui-cell weui-cell_access weui-cell_link">
+                            <view class="weui-cell__hd">
+                                <view class="zan-icon zan-icon-{{childItem.icon}}"/>
+                            </view>
+                            <view class="weui-cell__bd customFont">{{childItem.text}}</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"/>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+    </view>

@@ -1,0 +1,65 @@
+
+  <view class="container">
+    
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+    <!-- list item-start -->
+    <view class="zan-panel"  wx:for="{{list}}" wx:key="title" style="margin-top:5px;">
+      <view class="zan-card card-item">
+        <view class="thumb zan-card__thumb">
+          <image class="img" src="../../../static/images/thing.png" mode="aspectFit"/>
+        </view>
+        <view class="zan-card__detail " bindtap="chooseContainer" data-wpychoosecontainer-a="{{item}}">
+          <view class="zan-card__detail-row">
+            <view class="zan-card__right-col"><text class="custom">{{item.num - item.realNum}}</text> 件</view>
+            <view class="zan-card__left-col zan-ellipsis custom">
+              {{item.goodName}}
+            </view>
+          </view>
+
+          <view class="zan-card__detail-row zan-c-gray-darker" style="padding-bottom:5px;">
+            <view class="zan-card__right-col">
+                <button class="zan-btn zan-btn--small  zan-btn--plain customdetail">上架</button>
+            </view>
+            <view class="zan-card__left-col">
+              货号：{{item.goodNo}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+     <view class="weui-form-preview footer-button">
+        <view class="weui-form-preview__ft">
+          <view bindtap="toOther" class="weui-form-preview__btn weui-form-preview__btn_primary">连容器上架</view>
+        </view>
+      </view>
+
+    <view  wx:if="{{list.length === 0 && type===2}}">
+      
+  <block  wx:if="{{$zanLoadmore$nomore}}">
+    <view class="zan-loadmore zan-loadmore--nomore">
+      <view class="zan-loadmore__tips">
+        <view class="zan-loadmore__dot"/>
+      </view>
+    </view>
+  </block>
+
+  <block  wx:elif="{{$zanLoadmore$nodata}}">
+    <view class="zan-loadmore zan-loadmore--nodata">
+      <view class="zan-loadmore__tips">{{ $zanLoadmore$nodata_str || '暂无数据' }}</view>
+    </view>
+  </block>
+
+  <block  wx:elif="{{$zanLoadmore$loading}}">
+    <view class="zan-loadmore">
+      <view class="zan-loading"/>
+      <view class="zan-loadmore__tips">加载11中...</view>
+    </view>
+  </block>
+
+    </view>
+
+    <!-- list item-end -->
+
+  </view>

@@ -1,0 +1,68 @@
+
+    <view class="container">
+        <view class="serach-bar ">
+            <view class="serach-type" bindtap="changeChonse">
+                <view class="  zan-pull-left ">
+                    {{workTypes[typeIndex].title}}
+                </view>
+                <view class="gl"/>
+            </view>
+
+            <view class="serach-btn zan-pull-right" bindtap="getLoggingList">
+                搜索
+            </view>
+        </view>
+        <scroll-view scroll-y class="scroll-view" style="height:calc(100% - 41px)" bindscrolltolower="lower" bindscroll="scroll">
+            <view  wx:for="{{loggingList}}" wx:key="*this" wx:for-item="log">
+                <view class="{{log.scroll < scrollTop ? log.scrollNext >= scrollTop ? 'zan-panel-title fixed zan-pannel-titileinfo' : 'zan-panel-title zan-pannel-titileinfo' : 'zan-panel-title zan-pannel-titileinfo'}}">{{log.month}}月</view>
+                <view class="zan-panel" wx:for="{{log.data}}" wx:key="*this" bindtap="catInfo" data-wpycatinfo-a="{{item}}">
+                     <view class="zan-card card-item" style="padding:5px 15px 0px 15px;margin:5px 5px 0px 5px">
+                        <view class="thumb">
+                        <image class="img" src="{{item.logoUrl}}" mode="aspectFit"/>
+                        </view>
+                        <view class="detail">
+                        <view class="text title">{{item.fromUcName==null? '我的工作' :item.fromUcName+'的委托' }}</view>
+                        <view class="text titleDetail">完成时间：{{item.finishTime||"----"}}</view>
+                        </view>
+                    </view>
+                    <view class="zan-card card-item card-item-text" style="padding-top:0px;margin:0px 15px 5px 16px;">
+                        <view class="zan-card__detail" style="padding-top:3px">
+                        <view class="zan-card__detail-row zan-c-gray-darker">
+                            <!-- <view class="zan-card__right-col">{{item.busyType}}</view> -->
+                            <view class="title1"> {{item.showText}}
+                            </view>
+                        </view>
+                        <view class="zan-card__detail-row zan-c-gray-darker titleDetail">
+                            <view class="zan-card__left-col">{{item.permCompanyName}}</view>
+                            <view class="zan-card__left-col" style="margin-right:2px;">
+                                <view class="ico" style="margin-left:5px;">
+                                <view class="zan-icon zan-icon-exchange" style="margin-right:0px;"/>{{item.busyTypeText}}
+                                </view>
+                            工作地址：{{item.addressName}}
+                            </view>
+                        </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </scroll-view>
+        <!-- POP -->
+        <view class="zan-popup zan-popup--bottom {{ showPop ? 'zan-popup--show' : ''}}">
+            <view class="zan-popup__mask" bindtap="changeChonse"/>
+            <view class="zan-popup__container">
+                <view class="zan-panel zan-panel--without-border">
+                    <view class="zan-icon zan-icon-close" bindtap="changeChonse"/>
+                    <view class="size-label-box ">
+                        <view class="label titleinfo">工作记录类型</view>
+                        <view class="label-item-box ">
+                            <view  wx:for="{{workTypes}}" wx:key="*this" wx:for-index="idx" data-index="{{idx}}" bindtap="handleTypeClick" class="titleinfo label-item  {{typeIndex == idx ? 'active' : '' }}">
+                                {{item.title}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- POP END -->
+    </view>

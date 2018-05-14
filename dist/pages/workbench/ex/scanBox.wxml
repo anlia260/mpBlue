@@ -1,0 +1,73 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <view class="zan-panel">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">出库单编号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="length" disabled value="{{codeSn}}" class="weui-input"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">总箱数</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="length" disabled value="{{detail.totalNum}}" class="weui-input"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">已出库</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="length" disabled value="{{detail.outNum}}" class="weui-input"/>
+                </view>
+            </view>
+        </view>
+        <view class="zan-panel">
+            <view class="weui-cell weui-cell_input" bindtap="tolist">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">待出库</view>
+                </view>
+                <view class="weui-cell__bd">
+                   <view class="weui-input weui-cell__ft weui-cell__ft_in-access"/>
+                </view>
+            </view> 
+        </view>
+        <view  wx:if="{{detail.totalNum - detail.outNum != 0 }}">
+            <view class="zan-panel">
+              <view class="zan-cell zan-form__item">
+                  <input bindinput="code" focus="true" value="{{barCode}}" class="zan-form__input zan-cell__bd" placeholder="填写出库货品箱号"/> 
+              </view>
+            </view>
+            <view style="margin-top:10px"> 
+              <view class="zan-cell__bd zan-link zan-c-blue" bindtap="scanQr">切换成扫描模式</view>  
+            </view> 
+             <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+                <button class="weui-btn  primary" bindtap="setContainer">确认</button>
+            </view>
+        </view>
+        <view class="weui-msg"  wx:else>
+            <view class="weui-msg__icon-area">
+                <icon type="success" color="#004a9f" size="44"/>
+            </view>
+            <view class="weui-msg__text-area">
+                <view class="weui-msg__title">{{detail.deliverSn}}</view>
+                <view class="weui-msg__desc">已完成出库，<a href="javascript:;" bindtap="handleDetailView" class="weui-msg__link">查看出库明细</a></view>
+            </view>
+
+            <view class="weui-msg__extra-area">
+                <view wx:if="{{isfrom === 1 }}" class="page__bd page__bd_spacing" style="margin-top:20px;">
+                    <button class="weui-btn   primary" bindtap="continueTodo">继续出库</button>
+                </view> 
+                <view class="page__bd page__bd_spacing" style="margin-top:10px;">
+                    <button class="weui-btn   primary" bindtap="backTodo">返回待办列表</button>
+                </view> 
+            </view>
+        </view>
+    </view>

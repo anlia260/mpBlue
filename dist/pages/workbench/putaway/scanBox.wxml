@@ -1,0 +1,196 @@
+
+    <view class="container">
+        <zanToptips/>
+        <!-- input tab -->
+        <view hidden="{{isChoose}}">
+            <view class="zan-panel">
+                <view class="zan-cell zan-form__item">
+                    <input bindinput="code" focus="{{focusinfo}}" value="{{barCode}}" class="zan-form__input zan-cell__bd" placeholder="填写容器、托盘、库位编号"/>
+                </view>
+            </view>
+            <view style="margin-top:10px">
+              <view class="zan-cell__bd zan-link zan-c-blue" bindtap="scanQr">切换成扫描模式</view>
+              <view class="zan-cell__ft zan-link zan-c-blue" bindtap="handleHide">空闲位置 </view>
+            </view>
+             <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+                <button class="weui-btn  primary" bindtap="setContainer">确认</button>
+            </view>
+
+        </view>
+        <!-- input end -->
+        <!-- free tab -->
+        <view class="free-container" hidden="{{!isChoose}}">
+            <view class="zan-panel ">
+                <view class="zan-cell panneItle">
+                    <picker bindchange="bindAreaChange" range-key="areaName" range="{{areaList}}" style="width:100%">
+                         <!--<input class="weui-input" disabled value="{{areaList[areaId].areaName}}" placeholder="请选择库区" />-->
+                        <view class="picker">
+                             <view class="weui-panel weui-panel_access" style=" position: static;">
+                              <view class="weui-cell weui-cell_access weui-cell_link" style="padding-left:0;position: static;"> 
+                                  <view class="weui-cell__bd customFont"> {{areaList[areaId].areaName}}</view>
+                                  <view class="weui-cell__ft weui-cell__ft_in-access"/>
+                              </view>
+                          </view> 
+                    
+                </view>
+            
+
+            <!-- select-satrt -->
+            <view class="zan-select-list">
+                <view class="zan-select-item"  wx:for="{{potisonList}}" wx:key="areaId" wx:for-item="item">
+                    <view class="zan-panel-title panneItle">{{item.positionSn}}</view>
+                    <view class="zan-panel">
+                        <view class="zan-cell  " style="line-height:0.8" wx:for-item="jtem" wx:for="{{item.deviceVoList}}" wx:key="{{jtem.deviceSn}}" bindtap="bindDeviceChange" data-wpybinddevicechange-a="{{jtem}}" data-wpybinddevicechange-b="{{item}}">
+                            <view class="zan-cell__bd {{jtem.deviceSn === barCode?'active':''}}">{{jtem.deviceSn}}</view>
+                            <icon wx:if="{{ jtem.deviceSn === barCode }}" type="success_no_circle" color="red" size="14"/>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- select-end -->
+
+            <view class="zan-link zan-c-blue footer-button">
+                <view bindtap="handleHide"> 切换为填写模式</view>
+                <!-- <view bindtap="handleChoose" class="zan-pull-right"> 确认</view> -->
+            </view>
+        
+        <!-- free end -->
+    
+
+
+<script>
+import wepy from "wepy";
+import service from "@/mixins/service";
+import WxexMixins from "@/mixins/wxex";
+import zanToptips from "@/components/zan-toptips";
+import zanLoadmore from "@/components/zan-loadmore";
+export default class Index extends wepy.page {
+  components = {
+    zanToptips,
+    zanLoadmore
+  };
+ mixins = [WxexMixins];
+  data = {
+    isChoose: false,
+    areaList: [],
+    areaId: "",
+    potisonList: [],
+    positionId: "",
+    deviceList: [],
+    barCode: "",
+    focusinfo: true
+  };
+  events = {};
+  methods = {
+    code: e => {
+      const code = e.detail.value;
+      this.barCode = code;
+      this.$apply();
+    },
+    bindAreaChange: params => {
+      var sort = params.detail.value;
+      this.areaId = params.detail.value;
+      this.positionId = "";
+      this.barCode = "";
+      this.getPosition(this.areaList[sort].areaId);
+      this.$apply();
+    },
+    bindDeviceChange: (params, parent) => {
+      this.barCode = params.deviceSn;
+      this.positionId = parent.positionId;
+      this.positionSn = parent.positionSn;
+      this.isChoose = !this.isChoose;
+      this.$apply();
+    },
+    handleChoose: params => {
+      const { barCode } = this;
+      if (barCode) {
+        this.checkDevice();
+      } else {
+        this.showTips("所选容器不存在");
+      }
+      this.$apply();
+    },
+    handleHide: params => {
+      wx.setNavigationBarTitle({ title: "上架-待上架容器" });
+      this.isChoose = !this.isChoose;
+      this.$apply();
+    },
+    setContainer: e => {
+      this.checkDevice();
+    },
+    scanQr: params => {
+      this.getScan();
+    }
+  };
+  onLoad(params, data) {
+    const { userInfo } = this.$parent.globalData;
+    this.info = data.preload ? data.preload : {};
+    this.goto = "./chooseD";
+    this.userInfo = userInfo;
+    this.$apply();
+    this.getArea();
+  }
+
+  async getScan() {
+    wx.scanCode({
+      success: res => { 
+        this.barCode = res.result;
+             this.$apply();
+      }
+    });
+  }
+  async checkDevice() {
+    let params = {
+      ucId: this.userInfo.ucId,
+      tk: this.userInfo.token,
+      addressId: this.info.work.addressId,
+      barCode: this.barCode.toUpperCase()
+    };
+    const { res, msg, state } = await service.Aget("device/getDevice", params);
+    if (state) {
+      this.$preload("work", this.info.work);
+      this.$preload("deviceInfo", res);
+      this.$navigate(this.goto);
+    } else {
+      this.showTips(msg);
+    }
+    this.$apply();
+  }
+  async getPosition(areaId) {
+    let params = {
+      ucId: this.userInfo.ucId,
+      tk: this.userInfo.token,
+      addressId: this.info.work.addressId || 0,
+      areaId: areaId ? areaId : ""
+    };
+    const { res, state } = await service.Aget(
+      "position/listEmptyPosition",
+      params
+    );
+    if (state) {
+      this.potisonList = res;
+    } else {
+      this.potisonList = [];
+      this.showTips("没有符合条件的库位信息");
+    }
+    this.$apply();
+  }
+  async getArea(addressId) {
+    let params = {
+      ucId: this.userInfo.ucId,
+      tk: this.userInfo.token,
+      addressId: this.info.work.addressId
+    };
+    const { res, state } = await service.Aget("position/listEmptyArea", params);
+    if (state) {
+      this.areaList = res;
+      this.areaId = 0;
+      this.getPosition(res[0].areaId);
+    } else {
+      this.showTips(res);
+    }
+    this.$apply();
+  } 
+}
+</script></picker></view></view></view></view>

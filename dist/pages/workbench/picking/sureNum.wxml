@@ -1,0 +1,87 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- form-start --> 
+        <form bindsubmit="handleSubmit" bindreset="formReset">
+            <view class="zan-panel">
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input"  wx:if="{{pickDetail.packageType != 1}}">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">拣货容器</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" value="{{pickDetail.basketSn}}" class="weui-input" placeholder="拣货篮"/>
+                        </view>
+                        <view class="weui-cell__ft">
+                            <button bindtap="fullBasket" class="zan-btn zan-btn--mini zan-btn--warn zan-btn--plain customdetail">容器已满</button>
+                        </view>
+                    </view>
+                </view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">库位</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" value="{{pickDetail.positionSn}}" class="weui-input" placeholder="库位"/>
+                        </view>
+                    </view>
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">位置</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" value="{{isVirtul == 2 ? pickDetail.deviceSn:pickDetail.positionSn}}" class="weui-input" placeholder="容器"/>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="zan-panel" style="margin-top:5px">
+                <view class="weui-cells weui-cells_after-title"> 
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">名称</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" value="{{pickDetail.goodName}}" class="weui-input" disabled/>
+                        </view> 
+                    </view>
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">编号</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" value="{{pickDetail.goodNo}}" class="weui-input" disabled/>
+                        </view> 
+                    </view>
+                    <view class="weui-cell weui-cell_input">
+                          <view class="weui-cell__hd">
+                            <view class="weui-label">计划数量</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" value="{{pickDetail.num}}" class="weui-input" disabled/> 
+                        </view>   
+                    </view>
+                     <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">拣货数量</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            
+  <view class="zan-quantity {{ $zanQuantity$size === 'small' ? 'zan-quantity--small' : '' }}">
+    <view class="zan-quantity__minus {{ $zanQuantity$quantity <= $zanQuantity$min ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $zanQuantity$componentId }}" data-quantity="{{ $zanQuantity$quantity }}" data-disabled="{{ $zanQuantity$quantity <= $zanQuantity$min }}" bindtap="$zanQuantity$handleZanQuantityMinus">-</view>
+    <input class="zan-quantity__text {{ $zanQuantity$min >= $zanQuantity$max ? 'zan-quantity--disabled' : '' }}" type="number" data-component-id="{{ $zanQuantity$componentId }}" data-min="{{ $zanQuantity$min }}" data-max="{{ $zanQuantity$max }}" value="{{ $zanQuantity$quantity }}" disabled="{{ $zanQuantity$min >= $zanQuantity$max }}" bindblur="$zanQuantity$handleZanQuantityBlur"/>
+    <view class="zan-quantity__plus {{ $zanQuantity$quantity >= $zanQuantity$max ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $zanQuantity$componentId }}" data-quantity="{{ $zanQuantity$quantity }}" data-disabled="{{ $zanQuantity$quantity >= $zanQuantity$max }}" bindtap="$zanQuantity$handleZanQuantityPlus">+</view>
+  </view>
+
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+                <button class="weui-btn  primary" formType="submit">确认完成</button>
+            </view> 
+        </form> 
+    </view>

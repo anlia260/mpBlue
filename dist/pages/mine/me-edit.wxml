@@ -1,0 +1,58 @@
+
+  <view class="container page">
+
+     <view class="page__bd">
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                 <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{ userInfo.logoUrl }}"/>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">{{ userInfo.nickName }}</view>
+                        <view class="weui-media-box__desc">{{ userInfo.passport }}</view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+
+
+        <view class="weui-cells__title celltitle">编辑项</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input" style="padding-right:0px;">
+                <view class="weui-cell__hd">
+                    <view class="weui-label labelinfo">性别</view>
+                </view>
+                <view class="weui-cell__bd  ">
+                     <picker bindchange="bindAccountChange" value="{{userInfo.sex}}" range="{{acounts}}">
+                        <view class="weui-select inputstyle" style="border-right:none;padding-right:0px;">{{acounts[userInfo.sex]}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label labelinfo">昵称</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input inputstyle" value="{{userInfo.nickName}}" maxlength="10" bindinput="inputName" placeholder="请输入昵称"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label labelinfo" style="white-space:nowrap;text-align:left;">签名</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <!--<input class="weui-input inputstyle" value="{{userInfo.adverInfo}}"  maxlength="30" bindinput="inputTyping" placeholder="请输入不超过30个字的签名"/>-->
+                    <textarea class="weui-textarea textareastyle " style="height: 3.3em" maxlength="30" bindinput="inputTyping" value="{{ userInfo.adverInfo }}"/>
+                   <view class="weui-textarea-counter">{{ userInfo.adverInfo.length }}/30</view> 
+                </view>
+            </view>
+        </view>
+        <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+            <button class="weui-btn  primary" bindtap="handleSubmit">保存</button>
+        </view> 
+ 
+
+    </view>
+
+  </view>

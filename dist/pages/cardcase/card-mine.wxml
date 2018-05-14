@@ -1,0 +1,62 @@
+
+  <view class="container page">
+     <view class="page__bd">
+       <view class="zan-panel"  wx:for="{{cardList}}" wx:key="companyId">
+        <view class="zan-card">
+         <view class="zan-card__thumb logodiv" bindtap="handleEdit" data-wpyhandleedit-a="{{item}}">
+           <image class="zan-card__img logo" src="{{item.type === 1 ? item.userLogo : item.logo}}" mode="aspectFit"/>
+         </view>
+         <!-- 卡片右侧详情描述 -->
+         <view class="zan-card__detail carddetail">
+           <!-- 商品标题行 -->
+           <!-- 每行可以使用 zan-card__detail-row 来控制展示区域 -->
+           <!-- 每行里面可以用 zan-card__left-col zan-card__right-col 来控制左右展示 -->
+           <view class="zan-card__detail-row" bindtap="handleEdit" data-wpyhandleedit-a="{{item}}">
+             <view class="zan-card__left-col zan-ellipsis--l2"> 
+               {{item.type === 2 ? item.companyName : item.name }}
+             </view> 
+           </view>
+           <view wx:if="{{item.address}}" class="zan-card__detail-row zan-c-gray-darker" bindtap="handleEdit" data-wpyhandleedit-a="{{item}}">
+             <view class="zan-card__right-col"/>
+             <view class="zan-card__left-col detailkRow">
+               {{item.address}}
+             </view>
+           </view>
+           <view class="zan-card__detail-row zan-c-gray-darker" bindtap="handleEdit" data-wpyhandleedit-a="{{item}}">
+             <view class="zan-card__right-col"/>
+             <view class="zan-card__left-col detailkRow">
+               电话： {{item.officePhone}}
+             </view>
+           </view>
+           <view class="zan-card__detail-row zan-c-gray-darker" bindtap="handleEdit" data-wpyhandleedit-a="{{item}}">
+             <view class="zan-card__right-col"/>
+             <view class="zan-card__left-col detailkRow">
+               手机： {{item.phone}}
+             </view>
+           </view>
+           <view class="zan-card__detail-row zan-c-gray-darker" bindtap="handleEdit" data-wpyhandleedit-a="{{item}}">
+             <view class="zan-card__right-col"/>
+             <view class="zan-card__left-col detailkRow">
+               邮箱： {{item.email}}
+             </view>
+           </view>
+           <view class="zan-card__detail-row ">
+              <view class="zan-card__right-col " bindtap="linkQrCode" data-parterId="{{item.parterId}}" data-wpylinkqrcode-a="{{item}}">
+                <image class="icon" src="../../static/images/nav/fenxiang.png"/> 
+                
+              </view> 
+              <view class="zan-card__left-col leftname">
+                    {{item.type === 2 ? item.name : '' }} 
+              </view> 
+           </view> 
+         </view>
+         
+       </view>
+       </view>
+       <view class="weui-form-preview footer-button">
+         <view class="weui-form-preview__ft">
+           <view bindtap="handleSubmit" class="weui-form-preview__btn weui-form-preview__btn_primary">新增</view>
+         </view>
+       </view>
+    </view>
+  </view>

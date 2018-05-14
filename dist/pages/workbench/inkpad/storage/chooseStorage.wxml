@@ -1,0 +1,16 @@
+
+    <view class="container">
+          
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <view class="zan-panel">
+            <view class="zan-cell zan-form__item">
+                <input bindinput="code" focus="{{focusinfo}}" value="{{storageSn}}" class="zan-form__input zan-cell__bd" placeholder="填写采购或者寄存单号"/>
+            </view>
+        </view>
+
+        <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+        <button class="weui-btn   primary" bindtap="getStorage">确认</button>
+        <button class="weui-btn   primary" bindtap="print">打印测试页</button>
+        </view>
+    </view>

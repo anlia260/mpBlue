@@ -1,0 +1,36 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- POP START -->
+        <view class="zan-popup zan-popup--bottom {{ true ? 'zan-popup--show' : ''}}">
+            <view class="zan-popup__mask" catchtap="toggleBottomPopup"/>
+            <view class="zan-popup__container">
+                <view class="zan-panel zan-panel--without-border">
+                    <view class="zan-icon zan-icon-close"/>
+                    <view class="size-label-box">
+                        <view class="label">122222</view>
+                        <view class="label-item-box">
+                            <view class="label-item {{true ? 'active' : '' }}">
+                                {{32322}}
+                            </view>
+                            <view class="label-item {{true ? 'active' : '' }}">
+                                {{32322}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class="buy-num-box">
+                        <view class="num-label">购买数量</view>
+                        <view class="num-box">
+                            33232
+                        </view>
+                    </view>
+                    <view class="popup-join-btn" bindtap="addShopCar">
+                        加入购物车
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- POP END -->
+    </view>

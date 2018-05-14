@@ -1,0 +1,46 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <view class="zan-panel">
+            <view class="zan-cell zan-cell--access">
+                <view class="zan-cell__bd">
+                    <view class="zan-cell__text">出库单编号：{{preload.detail.cusOrderId}}</view>
+                    <view class="zan-cell__desc">总箱数：{{preload.detail.totalNum}}，已出库：{{preload.detail.outNum}}箱</view>
+                </view>
+            </view>
+        </view>
+        <view class="zan-panel"  wx:if="{{detail.length != 0}}">
+            <block wx:for="{{detail}}" wx:for-index="index" wx:for-item="item" wx:key="deliverId">
+                <view class="zan-cell">
+                    <view class="zan-cell__bd">
+                        <view class="zan-cell__text">箱号：{{item.packageSn}}</view>
+                        <view class="zan-cell__desc">出库时间：{{item.modifyTime}}</view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        
+  <block  wx:if="{{$zanLoadmore$nomore}}">
+    <view class="zan-loadmore zan-loadmore--nomore">
+      <view class="zan-loadmore__tips">
+        <view class="zan-loadmore__dot"/>
+      </view>
+    </view>
+  </block>
+
+  <block  wx:elif="{{$zanLoadmore$nodata}}">
+    <view class="zan-loadmore zan-loadmore--nodata">
+      <view class="zan-loadmore__tips">{{ $zanLoadmore$nodata_str || '暂无数据' }}</view>
+    </view>
+  </block>
+
+  <block  wx:elif="{{$zanLoadmore$loading}}">
+    <view class="zan-loadmore">
+      <view class="zan-loading"/>
+      <view class="zan-loadmore__tips">加载11中...</view>
+    </view>
+  </block>
+
+    </view>

@@ -1,0 +1,76 @@
+
+  <view class="container page">
+     <view class="page__bd">
+       <view class="zan-panel">
+        <view class="zan-card">
+         <view class="zan-card__thumb">
+           <image class="zan-card__img" src="{{share==1 ? cardInfo.userLogo : cardInfo.parterCardVo.userLogo}}" mode="aspectFit"/>
+         </view>
+         <!-- 卡片右侧详情描述 -->
+         <view class="zan-card__detail">
+           <!-- 商品标题行 -->
+           <!-- 每行可以使用 zan-card__detail-row 来控制展示区域 -->
+           <!-- 每行里面可以用 zan-card__left-col zan-card__right-col 来控制左右展示 -->
+           <view class="zan-card__detail-row">
+             <view class="zan-card__left-col zan-ellipsis--l2">
+                 <view wx-if="{{share==1}}">
+                     {{cardInfo.type === 2 ? cardInfo.companyName : cardInfo.name}}
+                 </view>
+                 <view wx-else="wx-else">
+                     {{cardInfo.parterCardVo.type === 2 ? cardInfo.parterCardVo.companyName : cardInfo.parterCardVo.name}}
+                 </view>
+             </view>
+           </view>
+           <view class="zan-card__detail-row zan-c-gray-darker">
+             <view class="zan-card__right-col"/>
+             <view class="zan-card__left-col">
+                 {{share==1 ? cardInfo.address : cardInfo.parterCardVo.address}}
+             </view>
+           </view>
+           <view class="zan-card__detail-row zan-c-gray-darker">
+             <view class="zan-card__right-col"/>
+             <view class="zan-card__left-col">
+
+               电话： {{share==1 ? cardInfo.officePhone : cardInfo.parterCardVo.officePhone}}
+             </view>
+           </view>
+           <view class="zan-card__detail-row zan-c-gray-darker">
+             <view class="zan-card__right-col"/>
+             <view class="zan-card__left-col">
+               手机： {{share==1 ? cardInfo.phone : cardInfo.parterCardVo.phone}}
+             </view>
+           </view>
+           <view class="zan-card__detail-row zan-c-gray-darker">
+             <view class="zan-card__right-col"/>
+             <view class="zan-card__left-col">
+               邮箱： {{share==1 ? cardInfo.email : cardInfo.parterCardVo.email}}
+             </view>
+           </view>
+         </view>
+       </view>
+         <view class="zan-cell zan-cell--access">
+         </view>
+         <view class="zan-cell zan-cell--access">
+           <view class="zan-cell__bd">{{cardInfo.remark}}</view>
+         </view>
+       </view>
+       <view class="zan-panel">
+         <view class="zan-cell zan-cell--access">
+           <view class="zan-cell__bd">交换我的名片</view>
+           <view class="zan-cell__ft">
+             <picker bindchange="bindPickerChange" value="{{index}}" range="{{cardNameList}}">
+               <view class="picker">
+                 {{cardNameList[index]}}
+               </view>
+             </picker>
+           </view>
+         </view>
+       </view>
+       <view class=" share-button">
+         
+           <!-- <view bindtap="handleSubmit" class="weui-form-preview__btn weui-form-preview__btn_primary custom" >接受</view> -->
+            <button bindtap="handleSubmit" class="zan-btn zan-btn--small custom" style="font-size:16px">接受</button>
+       
+       </view>
+    </view>
+  </view>

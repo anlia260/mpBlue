@@ -1,0 +1,29 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <view class="zan-panel zan-panel--without-border" bindtap="checkAll">
+            <view class="zan-pull-left check-all">
+                <view  wx:if="{{checkedAll}}" class="zan-cell__icon zan-icon zan-icon-checked active"/>
+                <view  wx:else class="zan-cell__icon zan-icon zan-icon-checked"/>
+            </view>
+            <text class="zan-pull-left" style="height:35px;line-height:35px;">装箱单：{{deliverId}}</text>
+        </view>
+        <view class="zan-panel list">
+            <view class="zan-cell" bindtap="checkItem" wx:for="{{list}}" wx:key="packageId" data-wpycheckitem-a="{{item}}">
+                <view wx:if="{{item.checked}}" class="zan-cell__icon zan-icon zan-icon-checked active"/>
+                <view wx:else class="zan-cell__icon zan-icon zan-icon-checked"/>
+                <view class="zan-cell__bd">
+                    <view class="zan-cell__text">{{item.caseNum}}号箱</view>
+                    <view class="desc-input-max-length zan-cell__desc zan-font-12 zan-c-gray-darker zan-ellipsis">送往：{{item.address}}-{{item.addressName}}</view>
+                </view>
+                <view class="zan-cell__ft zan-font-12 zan-c-gray-dark">
+                    入库口：{{item.entranceName}}
+                </view>
+            </view>
+        </view>
+        <view class="footer-button">
+            <button class="zan-btn zan-btn--large zan-btn--warn" bindtap="printBlue">打印</button>
+        </view>
+    </view>

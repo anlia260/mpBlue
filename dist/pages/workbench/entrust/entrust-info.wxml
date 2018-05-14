@@ -1,0 +1,78 @@
+
+    <view class="container">
+        <view class="zan-panel">
+            <view class="zan-cell">
+                <view class="zan-cell__bd"><view class="weui-media-box_appmsg">
+                    <view class="weui-media-box__hd icon">
+                        <image class="weui-media-box__thumb" src="../../../static/images/nav/card-new.png"/>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">进行中</view>
+                        <view class="weui-media-box__desc">工作期限：{{entrust.createTime}} - {{entrust.expireTime}}</view>
+                    </view>
+                </view></view>
+                <view class="zan-cell__ft"/>
+            </view>
+            <view class="zan-cell zan-cell--access" bindtap="workRecord">
+                    <view class="zan-cell__bd"><view class="weui-media-box_appmsg">
+                        <view class="weui-media-box__hd icon">
+                            <image class="weui-media-box__thumb" src="../../../static/images/nav/card-new.png"/>
+                        </view>
+                        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                            <view class="weui-media-box__title">工作记录</view>
+                            <view class="weui-media-box__desc">记录时间：{{entrust.recordfirstTime}} - {{entrust.recordlastTime}}</view>
+                        </view>
+                    </view></view>
+                    <view class="zan-cell__ft"/>
+            </view>
+            <view class="zan-cell">
+                <view class="zan-cell__bd"><view class="weui-media-box_appmsg">
+                    <view class="weui-media-box__hd icon">
+                        <image class="weui-media-box__thumb" src="../../../static/images/nav/card-new.png"/>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">{{entrust.mandatary}}</view>
+                        <view class="weui-media-box__desc">受托人</view>
+                    </view>
+                </view></view>
+                <view class="zan-cell__ft"/>
+            </view>
+            <view class="zan-cell">
+                <view class="zan-cell__bd">
+                    <view class="weui-form-preview__bd">
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">{{entrust.entrustName}}</view>
+                            <view class="weui-form-preview__value"/>
+                        </view>
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">{{entrust.companyName}}</view>
+                            <view class="weui-form-preview__value"/>
+                        </view>
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">工作内容</view>
+                            <view class="weui-form-preview__value">{{entrust.workContent}}</view>
+                        </view>
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">工作地址</view>
+                            <view class="weui-form-preview__value">{{entrust.addressName}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="zan-cell">
+                <view class="zan-cell__bd">
+                    <view class="weui-form-preview__bd">
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">委托单编号</view>
+                            <view class="weui-form-preview__value">{{entrust.busySn}}</view>
+                        </view>
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">创建时间</view>
+                            <view class="weui-form-preview__value">{{entrust.createTime}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+    </view>

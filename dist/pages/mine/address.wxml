@@ -1,0 +1,53 @@
+
+  <view class="container page">
+    <view class="page__bd">
+      <!-- 公司列表 -->
+      <view  wx:for="{{addressList}}" wx:key="addressId" class="weui-panel weui-panel_access address-detail cellinfo">
+         <view class="weui-panel__bd">
+          <view wx:if="{{item.addressType!=2 ||  item.isCanOper==2}}" class="weui-media-box weui-media-box_text cellinfo">
+            <view class="weui-media-box__title">{{ item.addressName }}</view>
+            <view class="weui-media-box__desc">{{ item.address }}</view>
+          </view>
+           
+          <navigator wx:else url="depot?addressId={{item.addressId}}&companyId={{company.companyId}}" class="weui-media-box weui-media-box_text  cellinfo">
+            <view class="weui-media-box__title">{{ item.addressName }}</view>
+            <view class="weui-media-box__desc" style="margin-left:5px">{{ item.address }}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"/>
+          </navigator>
+        </view>
+
+        <!--<view class="weui-panel__bd">
+          <view class="weui-media-box weui-media-box_text cellinfo">
+            <view class="weui-media-box__title" style="margin-left:5px ">{{ item.addressName }}</view>
+            <view class="weui-media-box__desc" style="margin-left:15px;word-break:break-all;">{{ item.address }}</view>
+          </view>
+        </view>-->
+        <view class="weui-cell weui-cell_access defaultinfo">
+          <view class="weui-cell__bd ">
+            <checkbox-group bindchange="setDefault" data-wpysetdefault-a="{{item}}">
+              <label class="weui-cell weui-check__label">
+                 <checkbox class="weui-check" value="{{item.isDefault}}" checked="{{item.isDefault === 1}}"/>
+                 <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                   <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{item.isDefault === 2}}"/>
+                   <icon class="weui-icon-checkbox_success" type="success" color="#004a9f" size="23" wx:if="{{item.isDefault === 1}}"/>
+                 </view>
+                 <view class="weui-cell__bd">{{item.isDefault === 1 ? '默认地址' : '设为默认'}}</view>
+               </label>
+            </checkbox-group>
+          </view>
+          <view class="weui-cell__ft defaultinfo">
+            <button class="weui-btn mini-btn" type="default" size="mini" bindtap="handleEdit" data-wpyhandleedit-a="{{item}}">编辑</button>
+          </view>
+        </view>
+      </view>
+      <view wx-if="{{addressList.length === 0  && type !=1}}" class="weui-loadmore weui-loadmore_line">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+      </view>
+      <!-- 公司列表：操作-->
+      <view class="weui-form-preview footer-button">
+        <view class="weui-form-preview__ft">
+          <navigator url="address-add" class="weui-form-preview__btn weui-form-preview__btn_primary">新增地址</navigator>
+        </view>
+      </view>
+    </view>
+  </view>

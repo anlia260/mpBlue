@@ -1,0 +1,32 @@
+
+    <view class="container">
+         
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <view  wx:if="{{recordList.length > 0}}">
+        <view class="zan-panel zan-panel-title">
+            <view class="weui-flex">
+                <view class="weui-flex__item--two"><view class="placeholder">明细</view></view>
+                <view class="weui-flex__item"><view class="placeholder">工作量</view></view>
+                <view class="weui-flex__item--two"><view class="placeholder">完成时间</view></view>
+            </view>
+        </view>
+        <view class="zan-panel">
+            <view class="zan-cell" wx:for="{{recordList}}" wx:key="detailId">
+                <view class="weui-flex__item--two"><view class="item-column">
+                    <view class="item-column-title">{{item.showTitle}}</view>
+                    <view class="item-column-ft">{{item.showText}}</view>
+                </view></view>
+                <view class="weui-flex__item"><view class="item-column"> {{item.showNum}}件</view></view>
+                <view class="weui-flex__item--two"><view class="item-column">
+                    <view class="item-column-ft">
+                        {{item.createTime}}
+                    </view>
+                </view></view>
+            </view> 
+        </view>
+        </view>
+        <view  wx:else class="weui-loadmore ">
+                <view class="weui-loadmore__tips ">暂无数据</view>
+         </view>
+    </view>

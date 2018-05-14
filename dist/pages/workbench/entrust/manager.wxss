@@ -1,0 +1,1 @@
+.bages{padding:20px 0;display:flex}.bage__item{flex:1}.bage__icon{margin:0 auto;width:48px;height:75px;border-radius:4px}.bage__image{width:48px;height:48px}.bage__label{font-size:14px}.titleinfo{padding:5px 5px}.panelinfo{margin-top:0}

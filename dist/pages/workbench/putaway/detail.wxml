@@ -1,0 +1,75 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- form-start -->
+        <view class="zan-panel">
+            <form bindsubmit="handleSubmit" bindreset="formReset">
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">库位</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" value="{{nextDevice.positionSn}}" class="weui-input" placeholder="库位"/>
+                        </view>
+                    </view>
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">上架位置</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" value="{{nextDevice.deviceSn}}" class="weui-input" placeholder="容器"/>
+                        </view>
+                        <view class="weui-cell__ft">
+                            <button bindtap="chooseContainer" class="zan-btn zan-btn--mini zan-btn--default zan-btn--plain " style="font-size:15px">更换位置</button>
+                        </view>
+                    </view>
+                </view>
+                 
+                
+            </form>
+        </view>
+        
+
+        <view class="zan-panel" style="margin-top:5px;">
+            <view class="zan-card card-item">
+                <view class="thumb zan-card__thumb">
+                    <image class="img" src="{{preload.detail.goodUrl || '/static/images/thing.png'}}"/>
+                </view>
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row"> 
+                        <view class="zan-card__left-col zan-ellipsis custom">
+                            {{preload.detail.goodName}}
+                        </view>
+                    </view>
+                    <view class="zan-card__detail-row zan-c-gray-darker">
+                        <view class="zan-card__left-col">
+                            货号：{{preload.detail.goodNo}}
+                        </view>
+                    </view> 
+                </view>
+            </view>
+        </view>
+        <!-- list item-end -->
+        <view class="zan-panel">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">上架数量</view>
+                </view>
+                <view class="weui-cell__bd">
+                    
+  <view class="zan-quantity {{ $zanQuantity$size === 'small' ? 'zan-quantity--small' : '' }}">
+    <view class="zan-quantity__minus {{ $zanQuantity$quantity <= $zanQuantity$min ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $zanQuantity$componentId }}" data-quantity="{{ $zanQuantity$quantity }}" data-disabled="{{ $zanQuantity$quantity <= $zanQuantity$min }}" bindtap="$zanQuantity$handleZanQuantityMinus">-</view>
+    <input class="zan-quantity__text {{ $zanQuantity$min >= $zanQuantity$max ? 'zan-quantity--disabled' : '' }}" type="number" data-component-id="{{ $zanQuantity$componentId }}" data-min="{{ $zanQuantity$min }}" data-max="{{ $zanQuantity$max }}" value="{{ $zanQuantity$quantity }}" disabled="{{ $zanQuantity$min >= $zanQuantity$max }}" bindblur="$zanQuantity$handleZanQuantityBlur"/>
+    <view class="zan-quantity__plus {{ $zanQuantity$quantity >= $zanQuantity$max ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $zanQuantity$componentId }}" data-quantity="{{ $zanQuantity$quantity }}" data-disabled="{{ $zanQuantity$quantity >= $zanQuantity$max }}" bindtap="$zanQuantity$handleZanQuantityPlus">+</view>
+  </view>
+
+                </view>
+            </view>
+        </view>
+        <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+            <button class="weui-btn  primary" bindtap="comfirmInfo">确认上架</button>
+        </view>
+    </view>

@@ -1,0 +1,110 @@
+
+  <view class="container page">
+       
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+    <view class="page__bd">
+      <form bindsubmit="handleSubmit" bindreset="formReset">
+        <!-- 按钮区域 - 选择库区-->
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">库区</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker bindchange="bindAreaChange" range-key="abbr" range="{{listArea}}">
+                <input class="weui-input" disabled name="areaId" value="{{listArea[addForm.areaIndex].abbr}}" placeholder="请选择库区"/>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <!-- 按钮区域 - 列-->
+        <view class="check-group">
+          <view class="weui-flex__item">
+            <view class="zan-panel">
+              <view class="zan-cell zan-cell--switch">
+                <view class="zan-cell__bd">列</view>
+                <view class="zan-cell__ft">
+                  
+  <view class="zan-switch zan-switch--{{ $syncSwitch1$checked ? 'on' : 'off' }} {{ $syncSwitch1$disabled ? 'zan-swtich--disabled' : '' }}" data-checked="{{ $syncSwitch1$checked }}" data-loading="{{ $syncSwitch1$loading }}" data-disabled="{{ $syncSwitch1$disabled }}" data-component-id="{{ $syncSwitch1$componentId }}" bindtap="$syncSwitch1$handleZanSwitchChange">
+    <view class="zan-switch__circle">
+      <view hidden="{{ !$syncSwitch1$loading }}" class="zan-switch__loading"/>
+    </view>
+    <view class="zan-switch__bg"/>
+  </view>
+
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="check-group">
+          <view  wx:for="{{rows}}" wx:key="{{key}}" class="check-item">
+            <view class="placeholder {{item.disabled?'disabled':''}} {{item.checked?'active':''}}" bindtap="handleRowClick" data-wpyhandlerowclick-a="{{item}}">
+              {{item.value}}
+            </view>
+          </view>
+        </view>
+        <!-- 按钮区域 - 行-->
+        <view class="check-group">
+          <view class="weui-flex__item">
+            <view class="zan-panel">
+              <view class="zan-cell zan-cell--switch">
+                <view class="zan-cell__bd">行</view>
+                <view class="zan-cell__ft">
+                  
+  <view class="zan-switch zan-switch--{{ $syncSwitch2$checked ? 'on' : 'off' }} {{ $syncSwitch2$disabled ? 'zan-swtich--disabled' : '' }}" data-checked="{{ $syncSwitch2$checked }}" data-loading="{{ $syncSwitch2$loading }}" data-disabled="{{ $syncSwitch2$disabled }}" data-component-id="{{ $syncSwitch2$componentId }}" bindtap="$syncSwitch2$handleZanSwitchChange">
+    <view class="zan-switch__circle">
+      <view hidden="{{ !$syncSwitch2$loading }}" class="zan-switch__loading"/>
+    </view>
+    <view class="zan-switch__bg"/>
+  </view>
+
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="check-group">
+          <view  wx:for="{{columns}}" wx:key="{{key}}" class="check-item">
+            <view class="placeholder {{item.checked?'active':''}}" bindtap="handleColumnClick" data-wpyhandlecolumnclick-a="{{item.key}}">
+              {{item.value}}
+            </view>
+          </view>
+        </view>
+        <!-- 按钮区域 - 层-->
+        <view class="check-group">
+          <view class="weui-flex__item">
+            <view class="zan-panel">
+              <view class="zan-cell zan-cell--switch">
+                <view class="zan-cell__bd">层</view>
+                <view class="zan-cell__ft">
+                  
+  <view class="zan-switch zan-switch--{{ $syncSwitch3$checked ? 'on' : 'off' }} {{ $syncSwitch3$disabled ? 'zan-swtich--disabled' : '' }}" data-checked="{{ $syncSwitch3$checked }}" data-loading="{{ $syncSwitch3$loading }}" data-disabled="{{ $syncSwitch3$disabled }}" data-component-id="{{ $syncSwitch3$componentId }}" bindtap="$syncSwitch3$handleZanSwitchChange">
+    <view class="zan-switch__circle">
+      <view hidden="{{ !$syncSwitch3$loading }}" class="zan-switch__loading"/>
+    </view>
+    <view class="zan-switch__bg"/>
+  </view>
+
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="check-group" style="margin-bottom:100rpx">
+          <view wx:for="{{floors}}" wx:key="{{key}}" class="check-item">
+            <view class="placeholder {{item.checked?'active':''}}" bindtap="handleFloorClick" data-wpyhandlefloorclick-a="{{item.key}}">
+              {{item.value}}
+            </view>
+          </view>
+        </view>
+        <view class="weui-form-preview footer-button">
+          <view class="weui-form-preview__ft">
+            <button formType="submit" class="weui-form-preview__btn weui-form-preview__btn_primary">保存</button>
+            <button bindtap="handleBack" class="weui-form-preview__btn weui-form-preview__btn_default">取消</button>
+          </view>
+        </view>
+      </form>
+    </view>
+  </view>

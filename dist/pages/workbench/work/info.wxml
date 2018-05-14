@@ -1,0 +1,88 @@
+
+    <view class="container">
+        <view class="zan-panel">
+            <view class="weui-panel__bd zan-cell" style="padding:5px 15px 5px 15px">
+                <view class="thumb  ">
+                    <image class="img" src="{{workinfo.logoUrl}}" mode="aspectFit"/>
+                </view>
+                <view class="zan-card__detail ">
+                    {{workinfo.fromUcName==null? '我的工作' :workinfo.fromUcName+'的委托' }}
+                </view>
+                <view class="zan-card__detail ">
+                    <view class="zan-card__right-col">{{workinfo.busyTypeText}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="zan-panel" bindtap="workRecord">
+            <view class="weui-panel__bd zan-cell" style="padding:5px 15px 5px 15px"> 
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row"> 
+                        <view class="zan-card__left-col weui-cell__ft_in-access"> 工作记录</view> 
+                    </view>  
+                </view>
+            </view>
+        </view>
+        <view class="zan-panel" bindtap="toList" data-wpytolist-a="{{workinfo}}">
+            <view class="weui-panel__bd zan-cell" style="padding:5px 15px 5px 15px"> 
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row">
+                        <view class="zan-card__right-col weui-cell__ft_in-access">  <text selectable="true">{{workinfo.busySn}}</text></view>
+                        <view class="zan-card__left-col ">{{workinfo.busyTypeText}}单号</view>
+                    </view>  
+                </view>
+            </view>
+        </view>
+        <view class="zan-panel">
+            <view class="weui-panel__bd zan-cell" style="padding:5px 15px 5px 15px"> 
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row">
+                        <view class="zan-card__right-col"> <text selectable="true">{{workinfo.addressName}}</text></view>
+                        <view class="zan-card__left-col "> 工作地址</view>
+                    </view>  
+                </view>
+            </view>
+        </view>
+        <view class="zan-panel">
+            <view class="weui-panel__bd zan-cell" style="padding:5px 15px 5px 15px"> 
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row">
+                        <view class="zan-card__right-col"> <text selectable="true"> {{workinfo.permCompanyName}}</text></view>
+                        <view class="zan-card__left-col "> 工作所属</view>
+                    </view>  
+                </view>
+            </view>
+        </view>
+        <view class="zan-panel">
+            <view class="weui-panel__bd zan-cell" style="padding:5px 15px 5px 15px"> 
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row">
+                        <view class="zan-card__right-col"> {{workinfo.createTime}}</view>
+                        <view class="zan-card__left-col "> 创建时间</view>
+                    </view>  
+                </view>
+            </view>
+        </view>
+        <view class="zan-panel"  wx:if="{{workinfo.entrustSn }}">
+            <view class="weui-panel__bd zan-cell" style="padding:5px 15px 5px 15px"> 
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row">
+                        <view class="zan-card__right-col"> <text selectable="true"> {{workinfo.entrustSn}}</text></view>
+                        <view class="zan-card__left-col "> 委托单号</view>
+                    </view>  
+                </view>
+            </view>
+        </view>
+        <view class="zan-panel">
+            <view class="weui-panel__bd zan-cell" style="padding:5px 15px 5px 15px"> 
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row">
+                        <view class="zan-card__right-col"> <text selectable="true"> {{workinfo.workMap.cgOrder}}</text></view>
+                        <view class="zan-card__left-col ">客户单号</view>
+                    </view>  
+                </view>
+            </view> 
+        </view>
+
+
+
+    </view>

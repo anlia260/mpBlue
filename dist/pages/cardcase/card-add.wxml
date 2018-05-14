@@ -1,0 +1,44 @@
+
+  <view class="container page">
+      
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+    <view class="zan-panel">
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">公司名称</view>
+        <view class="zan-cell__bd">{{cardInfo.parterCard.companyName}}</view>
+      </view>
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">昵称</view>
+        <input class="zan-form__input zan-cell__bd" value="{{cardInfo.parterCard.name}}" bindinput="inputName" placeholder="请输入昵称"/>
+      </view>
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">工作地址</view>
+        <view class="weui-cell__bd">
+          <picker class="weui-input" mode="selector" bindchange="bindPickerChange" value="{{addressIndex}}" range="{{addressList}}" range-key="{{'addressName'}}">
+            <view class="picker">
+              {{addressList.length > 0 ? addressList[addressIndex].addressName: ''}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">办公电话</view>
+          <input class="zan-form__input zan-cell__bd" value="{{cardInfo.parterCard.officePhone}}" bindinput="inputOffice" placeholder="请输入办公电话"/>
+      </view>
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">手机</view>
+        <input class="zan-form__input zan-cell__bd" value="{{cardInfo.parterCard.phone}}" bindinput="inputPhone" placeholder="请输入手机"/>
+      </view>
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">邮箱</view>
+        <input class="zan-form__input zan-cell__bd" value="{{cardInfo.parterCard.email}}" bindinput="inputEmail" placeholder="请输入邮箱"/>
+      </view>
+    </view>
+    <view class="weui-form-preview footer-button">
+      <view class="weui-form-preview__ft">
+          <view bindtap="handleSubmit" class="weui-form-preview__btn weui-form-preview__btn_primary">保存</view>
+          <!--<view bindtap="handleBack" class="weui-form-preview__btn weui-form-preview__btn_default" >取消</view>-->
+      </view>
+    </view>
+  </view>

@@ -1,0 +1,24 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- free tab -->
+        <view class="free-container">
+            <!-- select-satrt -->
+            <view class="zan-select-list">
+                <view class="zan-select-item"  wx:for="{{areaList}}" wx:key="areaId" wx:for-item="item">
+                    <view class="zan-panel">
+                        <view class="zan-cell" bindtap="bindDeviceChange" data-wpybinddevicechange-a="{{item}}">
+                            <view class="zan-cell__bd {{item.areaId === areaId?'active':''}}">{{item.areaName}}</view>
+                            <icon wx:if="{{ item.areaId === areaId }}" type="success_no_circle" color="red" size="14"/>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- select-end -->
+        </view>
+
+
+        <!-- free end -->
+    </view>

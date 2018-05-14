@@ -1,0 +1,35 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+
+        <!-- list start -->
+        <view class="zan-panel"  wx:for="{{list}}" wx:key="{{name}}">
+            <view class="zan-card">
+                <view class="zan-card__detail mar0">
+                    <view class="zan-card__detail-row">
+                        <view class="zan-card__right-col">
+                            <button class="zan-btn btnpos zan-btn--small zan-btn--primary" bindtap="printText" data-wpyprinttext-a="{{item}}">
+                                打印
+                            </button>
+                        </view>
+                        <view class="zan-card__left-col zan-ellipsis--l2 fs14">
+                            {{item.goodName}}
+                        </view>
+                    </view>
+                    <view class="zan-card__detail-row zan-c-gray-darker">
+                        <view class="zan-card__left-col">
+                            {{item.goodNo}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- list end -->
+
+        <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+            <button class="weui-btn   primary" bindtap="print">打印</button>
+        </view>
+
+    </view>

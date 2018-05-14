@@ -1,0 +1,68 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <view class="zan-panel">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">库位</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="length" disabled value="{{info.unBoxInfo.positionSn}}" class="weui-input"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">位置</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="length" disabled value="{{info.unBoxInfo.deviceSn}}" class="weui-input"/>
+                </view>
+            </view>
+
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">拆出货品名称</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="length" disabled value="{{info.unBoxInfo.toGoodName}}" class="weui-input"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">拆出货品编号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="length" disabled value="{{info.unBoxInfo.toGoodNo}}" class="weui-input"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">计划数量</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="length" disabled value="{{info.unBoxInfo.num}}" class="weui-input"/>
+                </view>
+            </view>
+        </view>
+        <view class="zan-panel" style="margin-top:50px; border-bottom:0">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">数量</view>
+                </view>
+                <view class="weui-cell__bd">
+                    
+  <view class="zan-quantity {{ $zanQuantity$size === 'small' ? 'zan-quantity--small' : '' }}">
+    <view class="zan-quantity__minus {{ $zanQuantity$quantity <= $zanQuantity$min ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $zanQuantity$componentId }}" data-quantity="{{ $zanQuantity$quantity }}" data-disabled="{{ $zanQuantity$quantity <= $zanQuantity$min }}" bindtap="$zanQuantity$handleZanQuantityMinus">-</view>
+    <input class="zan-quantity__text {{ $zanQuantity$min >= $zanQuantity$max ? 'zan-quantity--disabled' : '' }}" type="number" data-component-id="{{ $zanQuantity$componentId }}" data-min="{{ $zanQuantity$min }}" data-max="{{ $zanQuantity$max }}" value="{{ $zanQuantity$quantity }}" disabled="{{ $zanQuantity$min >= $zanQuantity$max }}" bindblur="$zanQuantity$handleZanQuantityBlur"/>
+    <view class="zan-quantity__plus {{ $zanQuantity$quantity >= $zanQuantity$max ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $zanQuantity$componentId }}" data-quantity="{{ $zanQuantity$quantity }}" data-disabled="{{ $zanQuantity$quantity >= $zanQuantity$max }}" bindtap="$zanQuantity$handleZanQuantityPlus">+</view>
+  </view>
+
+                </view>
+            </view>
+        </view>
+        <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+            <button class="weui-btn  primary" bindtap="confimUnbox">完成拆箱</button>
+        </view>
+    </view>

@@ -1,0 +1,58 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- form-start -->
+        <view class="zan-panel" style="margin-top:0px;margin-bottom:5px;">  
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">货品</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" disabled value="{{packageInfo.goodName}}" class="weui-input"/>
+                        </view>
+                    </view>
+               
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">货号</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" disabled value="{{packageInfo.goodNo}}" class="weui-input"/>
+                        </view>
+                    </view> 
+        </view>
+        <!-- detail-start -->
+        <view class="zan-panel" style="margin-top:5px; ">  
+              <view class="weui-panel__bd zan-cell  "  wx:for="{{list}}" wx:key="{{goodNo}}" style="padding:5px 15px ; border-bottom: 1rpx solid #e5e5e5">
+                <view class="zan-card__detail ">
+                    <!-- <view class="zan-card__detail-ro w ">
+                        <view class="zan-card__left-col "style=" font-size:20px "> {{item.packageNum}}号箱</view>
+                    </view>  -->
+                    <view class="zan-card__detail-row " style=" font-size:17px">
+                        <view class="zan-card__right-col ">  {{item.cusOrderId}} </view>
+                        <view class="zan-card__left-col"> {{item.packageNum}}号箱 </view>
+                    </view> 
+                     <!-- <view class="zan-card__detail-row zan-c-gray-darker">
+                        <view class="zan-card__left-col"> 出库单号：{{item.cusOrderId}} </view>
+                    </view> -->
+                    <view class="zan-card__detail-row zan-c-gray-darker">
+                        <view class="zan-card__left-col"> 送往：{{item.addressName}} </view>
+                    </view>
+                    <view class="zan-card__detail-row zan-c-gray-darker">
+                        <view class="zan-card__left-col"> {{item.address}} </view>
+                    </view>   
+                </view>
+              </view> 
+            </view>
+        </view>
+        <view style=" min-height:50px;background-color:#f8f8f8;"> </view> 
+        <!-- list item-end --> 
+        <view class="weui-form-preview footer-button  bottom-box ">
+            <view class="weui-form-preview__ft">
+                <button bindtap="print" class="weui-form-preview__btn weui-form-preview__btn_primary">打印</button>
+            </view>
+        </view>
+    </view>

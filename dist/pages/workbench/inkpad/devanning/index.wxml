@@ -1,0 +1,64 @@
+
+    <view class="container">
+
+        <!-- <scroll-view scroll-y
+            style="height: {{windowHeight}}px;white-space:nowrap;"
+            upper-threshold="47" bindscroll="scroll" bindscrolltoupper="scrolltoupper" scroll-top="{{scrollTop}}">
+        <view class="sort-title" wx:if="{{scrollTop>47}}">
+            {{scrollTopText}}
+        </view> -->
+
+        <view class="clearfix" style="height:47px;border-bottom:1rpx solid #d7d6dc;">
+            <view class="zan-pull-left" style="width:28%;line-height:47px; text-align:center;">
+                <!-- {{workTypes[typeIndex].title}} -->
+                <picker class="weui-input" mode="selector" bindchange="bindPickerChange" value="{{addressIndex}}" range="{{addressList}}" range-key="{{'addressName'}}">
+                    <view class="picker">
+                     {{addressList.length > 0 ? addressList[addressIndex].addressName: '暂无仓库'}}
+                    <view  wx:if="{{addressList.length > 0}}" style="transform: rotate(90deg);" class="zan-cell__icon zan-icon zan-icon-arrow"/>
+                    </view>
+                </picker>
+            </view>
+            <view class="weui-search-bar zan-pull-right" style="width:70%;border:0">
+                <view class="weui-search-bar__form">
+                    <view class="weui-search-bar__box">
+                        <icon class="weui-icon-search_in-box" type="search" size="14"/>
+                        <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping"/>
+                        <view class="weui-icon-clear"  wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                            <icon type="clear" size="14"/>
+                        </view>
+                    </view>
+                    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                        <icon class="weui-icon-search" type="search" size="14"/>
+                        <view class="weui-search-bar__text">搜索</view>
+                    </label>
+                </view>
+                <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+            </view>
+        </view>
+        <view class="list" wx:for="{{list}}" wx:key="{{name}}">
+            <view class="zan-panel-title" id="{{item.name}}">
+                {{item.name}}
+            </view>
+            <view class="zan-panel" style="margin-top:5px;" wx:for="{{item.value}}" wx:key="{{planoutTime}}">
+                    <view class="zan-cell">
+                        <view class="zan-cell__bd">
+                            <view class="zan-cell__text">拆箱货品：{{item.toGoodName}}</view>
+                            <view class="desc-input-max-length zan-cell__desc zan-font-12 zan-c-gray-darker zan-ellipsis">
+                                临时容器：{{item.deviceSn}}
+                            </view>
+                            <view class="desc-input-max-length zan-font-12 zan-c-gray-darker zan-ellipsis">
+                                拆箱时间：{{item.unboxTime}}
+                            </view>
+                        </view>
+                        <view class="zan-cell__ft">
+                            <button class="zan-btn zan-btn--small zan-btn--warn" data-deviceId="{{item.deviceId}}" bindtap="print" data-wpyprint-a="">打印</button>
+                        </view>
+                    </view>
+            </view>
+        </view>
+
+        <!-- </scroll-view> -->
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+    </view>

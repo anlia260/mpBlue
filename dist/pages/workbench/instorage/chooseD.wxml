@@ -1,0 +1,66 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- 待入货品表单-start -->
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">位置</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker disabled="{{areaId}}" bindchange="bindAreaChange" range-key="areaName" range="{{areaList}}">
+                        <input class="weui-input" disabled value="{{areaList[areaSort].areaName}}" placeholder="请选择库区"/>
+                    </picker>
+                </view>.
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">单号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" disabled value="{{snText}}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title"  wx:if="{{toShelf.length > 0}} ">
+            <view class="weui-cell weui-cell_input" bindtap="toDetail">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">待入物品</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" disabled value="共{{toShelf.length}}种,{{total}}件"/>
+                </view>
+                <view class="weui-cell__bd">
+                    <view class="weui-input weui-cell__ft weui-cell__ft_in-access"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input" bindtap="chooseC">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">放置于</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" disabled value="{{deviceShow}}"/>
+                </view>
+                <view class="weui-cell__ft">
+                    <button class="zan-btn zan-btn--mini zan-btn--plain" style="font-size:15px">更换</button>
+                </view>
+            </view>
+        </view>
+        <!-- 待入货品表单-end -->
+        <!-- 输入货品单号-start -->
+        <view class="zan-panel">
+            <view class="zan-cell zan-form__item">
+                <input bindinput="code" focus="true" value="{{goodId}}" class="zan-form__input zan-cell__bd" placeholder="输入货品编号"/>
+            </view>
+        </view>
+        <!-- 输入货品单号-end -->
+        <view class="zan-cell__bd zan-link zan-c-blue" style="margin-top:30px" bindtap="scanQr">切换成扫描模式</view>
+        <view class="zan-cell__bd zan-link zan-c-blue" style="margin-top:30px" bindtap="doconfirm">结束本次入库单</view>
+        <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+            <button class="weui-btn   primary" bindtap="checkGood">确认</button>
+        </view>
+    </view>

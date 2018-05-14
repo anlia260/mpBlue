@@ -1,0 +1,123 @@
+
+    <view class="container page">
+        <view class="page__bd">
+            <view class="weui-tab">
+                <view class="weui-navbar" style=" z-index: 99;background:#f8f8f8;">
+                    <block  wx:for="{{tabs}}" wx:key="title">
+                        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                            <view class="weui-navbar__title">{{item}}</view>
+                        </view>
+                    </block>
+                    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"/>
+                </view>
+                <scroll-view scroll-y class="scroll-view" style="height:600px" bindscroll="listTwolower" bindscrolltolower="listTwolower">
+                    <view class="weui-tab__panel">
+                        <!-- 库区：列表 -->
+                        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+                            <view class="weui-cells">
+                                <view class="weui-cell"  wx:for="{{listOne}}" wx:key="areaId">
+                                    <view class="weui-cell__bd">{{item.areaName}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <!-- 库位：列表 -->
+                        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+                            <view wx:for="{{listTwo}}" wx:key="title">
+                                <view class="weui-cells__title">{{item.title}}</view>
+                                <view class="weui-cells">
+                                    <view class="weui-cell" wx:for="{{item.list}}" wx:key="positionId">
+                                        <view class="weui-cell__bd">{{item.positionSn}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <!-- 设备：列表 -->
+                        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+                            <view wx:for="{{listThree}}" wx:key="title">
+                                <view class="weui-cells__title">{{item.title}}</view>
+                                <view class="weui-cells">
+                                    <view class="weui-cell" wx:for="{{item.list}}" wx:key="areaId">
+                                        <view class="weui-cell__bd">{{item.deviceSn}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <!-- 出入口：列表 -->
+                        <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
+                            <view class="weui-cells">
+                                <view class="weui-cell" wx:for="{{listFour}}" wx:key="entranceId">
+                                    <view class="weui-cell__bd">{{item.entranceName}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+            <!-- 出入口-添加 -->
+            <view class="pop-box {{entranceAdd?'active':''}}">
+                <view class="zan-popup__mask" bindtap="changeEntranceChonse"/>
+                <form bindsubmit="handleEntranceSubmit" bindreset="formReset">
+                    <view class="weui-cells">
+                        <view style="padding: 40px 15px">
+                            
+  <view class="zan-quantity {{ $entranceNum$size === 'small' ? 'zan-quantity--small' : '' }}">
+    <view class="zan-quantity__minus {{ $entranceNum$quantity <= $entranceNum$min ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $entranceNum$componentId }}" data-quantity="{{ $entranceNum$quantity }}" data-disabled="{{ $entranceNum$quantity <= $entranceNum$min }}" bindtap="$entranceNum$handleZanQuantityMinus">-</view>
+    <input class="zan-quantity__text {{ $entranceNum$min >= $entranceNum$max ? 'zan-quantity--disabled' : '' }}" type="number" data-component-id="{{ $entranceNum$componentId }}" data-min="{{ $entranceNum$min }}" data-max="{{ $entranceNum$max }}" value="{{ $entranceNum$quantity }}" disabled="{{ $entranceNum$min >= $entranceNum$max }}" bindblur="$entranceNum$handleZanQuantityBlur"/>
+    <view class="zan-quantity__plus {{ $entranceNum$quantity >= $entranceNum$max ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $entranceNum$componentId }}" data-quantity="{{ $entranceNum$quantity }}" data-disabled="{{ $entranceNum$quantity >= $entranceNum$max }}" bindtap="$entranceNum$handleZanQuantityPlus">+</view>
+  </view>
+
+                        </view>
+                    </view>
+            
+            <view class="weui-form-preview__ft">
+                <button bindtap="handleEntranceCancle" class="weui-form-preview__btn weui-form-preview__btn_default">取消</button>
+                <button formType="submit" class="weui-form-preview__btn weui-form-preview__btn_primary">保存</button>
+            </view>
+            </form>
+        </view>
+        <!-- 设备-添加 -->
+        <view class="pop-box {{deviceAdd?'active':''}}">
+            <view class="zan-popup__mask" bindtap="changeDeviceChonse"/>
+            <form bindsubmit="handleDeviceSubmit" bindreset="formReset">
+                <view class="zan-panel">
+                    <view class="zan-cell">
+                        <view class="zan-cell__bd">新增设备</view>
+                    </view>
+                    <view class="zan-cell">
+                        <view class="zan-cell__bd">类型</view>
+                        <view class="zan-cell__ft">
+                            <picker bindchange="bindDiviceTypeChange" range-key="value" range="{{DiviceType}}">
+                                <input class="weui-input" disabled name="type" value="{{DiviceType[typeIndex].value}}" placeholder="请选择"/>
+                            </picker>
+                        </view>
+                    </view>
+                    <view class="zan-cell">
+                        <view class="zan-cell__bd">数量</view>
+                        <view class="zan-cell__ft">
+                            
+  <view class="zan-quantity {{ $deviceNum$size === 'small' ? 'zan-quantity--small' : '' }}">
+    <view class="zan-quantity__minus {{ $deviceNum$quantity <= $deviceNum$min ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $deviceNum$componentId }}" data-quantity="{{ $deviceNum$quantity }}" data-disabled="{{ $deviceNum$quantity <= $deviceNum$min }}" bindtap="$deviceNum$handleZanQuantityMinus">-</view>
+    <input class="zan-quantity__text {{ $deviceNum$min >= $deviceNum$max ? 'zan-quantity--disabled' : '' }}" type="number" data-component-id="{{ $deviceNum$componentId }}" data-min="{{ $deviceNum$min }}" data-max="{{ $deviceNum$max }}" value="{{ $deviceNum$quantity }}" disabled="{{ $deviceNum$min >= $deviceNum$max }}" bindblur="$deviceNum$handleZanQuantityBlur"/>
+    <view class="zan-quantity__plus {{ $deviceNum$quantity >= $deviceNum$max ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $deviceNum$componentId }}" data-quantity="{{ $deviceNum$quantity }}" data-disabled="{{ $deviceNum$quantity >= $deviceNum$max }}" bindtap="$deviceNum$handleZanQuantityPlus">+</view>
+  </view>
+
+                        </view>
+                    </view>
+                </view>
+                <view class="weui-form-preview__ft">
+                    <button bindtap="handleDeviceCancle" class="weui-form-preview__btn weui-form-preview__btn_default">取消</button>
+                    <button formType="submit" class="weui-form-preview__btn weui-form-preview__btn_primary">保存</button>
+                </view>
+            </form>
+        </view>
+        <!-- 公共操作：列表 -->
+        <view class="weui-form-preview footer-button">
+            <view class="weui-form-preview__ft">
+                <navigator wx:if="{{activeIndex == 0 || activeIndex == 1}}" url="{{urls[activeIndex]}}?companyId={{companyId}}&addressId={{addressId}}" class="weui-form-preview__btn weui-form-preview__btn_primary">
+                    <view class="weui-form-preview__btn weui-form-preview__btn_primary">新增</view>
+                </navigator>
+                <view wx:else bindtap="handleAdd" class="weui-form-preview__btn weui-form-preview__btn_primary">新增</view>
+            </view>
+        </view>
+    </view>
+    </view>

@@ -1,0 +1,87 @@
+
+  <view class="container page">
+    
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+    <view class="page__bd">
+      <form bindsubmit="handleSubmit" bindreset="formReset">
+        <view class="weui-panel weui-panel_access">
+          <view class="weui-panel__bd">
+            <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">地址类型</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <picker bindchange="bindPickerChange" range-key="value" range="{{AddressTypes}}">
+                    <input class="weui-input inputstyle" value="{{AddressTypes[addressIndex].value}}" placeholder="请选择类型"/>
+                  </picker>
+                </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">地址名称</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input inputstyle" bindinput="inputName" value="{{addForm.addressName}}" name="addressName" placeholder="招牌/门店/楼宇/小区"/>
+                </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">电话</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input inputstyle" bindinput="inputPhone" value="{{addForm.tel}}" name="tel" placeholder="如:02162614338"/>
+                </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label ">省市县</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <view class="weui-input inputstyle" name="inputci" bindtap="open">{{province}}{{city ?'-' +city:city}}{{ county?'-' +county : county}}</view>
+                </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">详细地址</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <textarea  wx:if="{{!condition}}" class="weui-textarea inputstyle" bindinput="inputAddress" name="address" style="height: 3.3em;font-size:16px" maxlength="200" value="{{ addForm.address }}"/>
+                  <view  wx:else/>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="page__bd page__bd_spacing" style="margin-top:120px;">
+                <button formType="submit" class="weui-btn primary">保存</button>
+        </view>
+
+      </form>
+    </view>
+    <view class="zan-popup zan-popup--bottom {{ condition ? 'zan-popup--show' : ''}}">
+      <view class="zan-popup__mask" bindtap="open"/>
+        <view class="zan-popup__container  " style="min-height:200rpx;">
+          <view class="zan-panel zan-panel--without-border">
+            <view class="zan-icon zan-icon-close" bindtap="open"/>
+              <view class="cityheader">
+                <view class="weui-form-preview__ft">
+                  <view bindtap="open" class="weui-form-preview__btn weui-form-preview__btn_primary custom">确定</view>
+                </view>
+              </view>
+              <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{values}}" bindchange="bindChange" class="citybody">
+                <picker-view-column>
+                  <view wx:for="{{provinces}}" wx:key="item.zoneName" style="line-height: 50px;padding-left:10px;">{{item.zoneName}}</view>
+                </picker-view-column>
+                <picker-view-column>
+                  <view wx:for="{{citys}}" wx:key="item.zoneName" style="line-height: 50px;padding-left:10px;">{{item.zoneName}}</view>
+                </picker-view-column>
+                <picker-view-column>
+                  <view wx:for="{{countys}}" wx:key="item.zoneName" style="line-height: 50px;padding-left:10px;">{{item.zoneName}}</view>
+                </picker-view-column>
+              </picker-view>
+            </view>
+          </view>
+        </view>
+      </view>

@@ -1,0 +1,35 @@
+
+    <view class="container">
+        <view class="zan-panel">
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">工作记录</view>
+                    <view class="weui-form-preview__value"/>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">记录时间</view>
+                    <view class="weui-form-preview__value">{{entrust.recordfirstTime ? entrust.recordfirstTime : ''}} - {{entrust.recordlastTime ? entrust.recordlastTime : ''}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="zan-panel">
+            <view class="zan-cell"  wx:for="{{recordList}}" wx:key="*this">
+                <view class="zan-cell__bd">
+                    <view class="weui-media-box_appmsg">
+                        <view class="weui-media-box__hd icon">
+                            <image class="weui-media-box__thumb" src="{{item.logoUrl}}"/>
+                        </view>
+                        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                            <view class="weui-media-box__title">{{item.userName + '（' + item.typeFormat + '）'}}<view class="zan-pull-right">{{item.beforeTime}}</view></view>
+                            <view class="weui-media-box__desc">{{item.startTime}}<view class="zan-pull-right">工作耗时</view></view>
+                        </view>
+                    </view>
+                </view>
+                <view class="zan-cell__ft">
+                </view>
+            </view>
+        </view>
+        <view  wx:if="{{recordList.length === 0}}" class="weui-loadmore ">
+            <view class="weui-loadmore__tips ">暂无数据</view>
+        </view>
+    </view>

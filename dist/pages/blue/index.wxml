@@ -1,0 +1,30 @@
+
+    <view class="container">
+        <zanToptips/>
+        <view class="Fpage huise">
+            <view class="Ftop">
+                <view class="topl" bindtap="tuichu">返回</view>
+                <view class="topc">蓝牙打印</view>
+                <view class="topr"/>
+            </view>
+            <view class="sbody">
+                <view class="TOU">
+                    <button class="BUT" bindtap="openP">搜 索</button>
+                </view>
+                <view class="TOU FF">
+                    <text>{{LYData.TS}}</text>
+                </view>
+                <view class="hang"  wx:for="{{LYSB}}" wx:key="{{index}}" hidden="{{item.dis}}">
+                    <text class="ly">{{item.name}}</text>
+                    <image class="xh" src="./modao/{{item.tp}}.png"/>
+                    <button hidden="{{item.LJ ==='0' ? false : true }}" bindtap="lianjie" data-uuid="{{item.id}}" class="SBUT">连 接</button>
+                    <button hidden="{{item.LJ ==='1' ? false : true }}" disabled="true" class="SBUT">正在连接</button>
+                    <button hidden="{{item.LJ ==='2' ? false : true }}" bindtap="duankai" data-uuid="{{item.id}}" class="SBUT">断 开</button>
+                    <button hidden="{{item.LJ ==='3' ? false : true }}" disabled="true" class="SBUT">连接失败</button>
+                </view>
+                <view class="TOU">
+                    <button class="BUT" bindtap="Printg">打印测试页</button>
+                </view>
+            </view>
+        </view>
+    </view>

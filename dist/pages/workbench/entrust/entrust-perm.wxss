@@ -1,0 +1,2 @@
+@import "./../../../components/zan-tab.wxss";
+.weui-cell__hd{margin-right:5px}.labelinfo{width:90px}.info{padding-left:0;margin-left:2px}.title{margin-right:1px;vertical-align:top;height:20px}

@@ -1,0 +1,35 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+ 
+        <!-- detail-start -->
+        <view class="zan-panel"> 
+            <view  wx:for="{{list}}" wx:key="{{detailId}}">
+              <view class="weui-panel__bd zan-cell" style="padding:5px 15px 5px 15px;border-bottom: 1rpx solid #e5e5e5;">
+                <view class="thumb  ">
+                    <image class="img" src="../../../static/images/thing.png" mode="aspectFit"/>
+                </view>
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row">
+                        <view class="zan-card__right-col" wx:if="{{source ===1 }}"><text>{{item.num-item.num}}件</text></view>
+                        <view class="zan-card__right-col" wx:else><text>{{item.num}}件</text></view>
+                        <view class="zan-card__left-col "> {{item.goodName}}</view>
+                    </view> 
+                    <view class="zan-card__detail-row zan-c-gray-darker">
+                        <view class="zan-card__right-col"> <text selectable="true">{{item.goodNo}}</text></view>
+                        <view class="zan-card__left-col">   {{item.cusGoodNo}}  </view>
+                    </view> 
+                </view>
+              </view> 
+            </view>   
+        </view>
+        <view style=" min-height:30px;background-color:#f8f8f8;"> </view> 
+        <!-- list item-end --> 
+        <view class="weui-form-preview footer-button  bottom-box ">
+          <view class="weui-form-preview__ft">
+            <button bindtap="handleSubmit" class="weui-form-preview__btn weui-form-preview__btn_primary">返回</button>
+          </view>
+        </view>
+        
+    </view>

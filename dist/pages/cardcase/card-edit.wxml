@@ -1,0 +1,74 @@
+
+  <view class="container page">
+      
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+     <view class="page__bd">
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                 <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{ card.type === 1 ? card.userLogo : card.logo }}"/>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">{{ name }}</view>
+                        <view class="weui-media-box__desc">{{ card.type === 2 ? card.companyName : '' }}</view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+
+
+        <view class="weui-cells__title celltitle">编辑项</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+              <view class="weui-label labelinfo">昵称</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{card.name}}" bindinput="inputName" placeholder="请输入昵称"/>
+            </view>
+          </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label labelinfo">地址</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <picker class="weui-input" mode="selector" bindchange="bindPickerChange" value="{{addressIndex}}" range="{{addressList}}" range-key="{{'addressName'}}">
+                    <view class="picker">
+                      {{addressList.length > 0 ? addressList[addressIndex].addressName: ''}}
+                    </view>
+                  </picker>
+                </view>
+            </view>
+          <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+              <view class="weui-label labelinfo">电话</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{card.officePhone}}" bindinput="inputOffice" placeholder="02185624851"/>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+              <view class="weui-label labelinfo">手机</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{card.phone}}" bindinput="inputPhone" placeholder="请输入手机号"/>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+              <view class="weui-label labelinfo">邮箱</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{card.email}}" bindinput="inputEmail" placeholder="请输入邮箱"/>
+            </view>
+          </view>
+        </view>
+         <view class="page__bd page__bd_spacing" style="margin-top:60px;">
+                <button bindtap="handleSubmit" class="weui-btn primary">保存</button>
+        </view> 
+    </view>
+
+  </view>

@@ -1,0 +1,3 @@
+@import "./../../../components/zan-loadmore.wxss";
+@import "./../../../components/zan-toptips.wxss";
+.footer-button{position:fixed;width:100%;bottom:0}.weui-panel__bd{font-size:15px}.weui-panel__bd .thumb{float:left}.weui-panel__bd .thumb,.weui-panel__bd .img{width:50px;height:50px}.weui-panel__bd .zan-card__detail{margin-left:5px;width:100%}.weui-panel__bd .zan-card__detail .zan-card__detail-row{height:25px;line-height:25px}.weui-panel__bd .zan-ellipsis{overflow:hidden;text-overflow:ellipsis;word-wrap:break-word;word-break:break-all}.weui-panel__bd .zan-card__left-col{margin-right:0}.weui-panel__bd .zan-cell{padding:5px 15px}

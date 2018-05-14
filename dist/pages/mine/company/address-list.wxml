@@ -1,0 +1,49 @@
+
+  <view class="container page">
+    <view class="page__bd">
+      <!-- 公司所有地址列表 -->
+      <view  wx:if="{{addressList.length > 0}}">
+        <radio-group class="radio-group" bindchange="radioChange">
+          <view wx:for="{{addressList}}" wx:key="title">
+            <view class="weui-cells__title">{{item.title}}</view>
+            <view class="weui-cells weui-cells_after-title  ">
+              <label class="radio" wx:for="{{item.list}}" wx:key="addressId">
+                  <view class="address-list" style="margin-top:1px">
+                    <view class="a-address  " style="padding:1px 0;">
+                      <view class="weui-cell weui-cell_access  ">
+                          <view wx:if="{{item.isAdd!=1}}" class="weui-cell__hd">
+                              <radio value="{{item.addressId}}" disabled="{{item.isAdd==1}}"/>
+                          </view>
+                          <view class="weui-cell__bd  ">
+                            <view class="left-text {{item.isAdd==1? 'active':'has-radio'}}  " data-id="{{item.addressId}}">
+                              <view class="name-tel" style="margin-bottom:1px">
+                                {{item.addressName}}
+                              </view>
+                              <view class="address-box  " style=" font-size:12px">
+                                {{item.province }} {{item.cityName }} {{item.districtName}}  {{item.address}}
+                              </view>
+                            </view>
+                          </view>
+                      </view>
+                    </view>
+                  </view>
+              </label>
+            </view>
+          </view>
+        </radio-group>
+      </view>
+
+      <view  wx:elif="{{ addressList.length === 0 && type !=1}}">
+        <view class="weui-loadmore weui-loadmore_line">
+          <view class="weui-loadmore__tips ">公司暂无地址数据</view>
+        </view>
+      </view>
+      <view class="weui-form-preview footer-button">
+        <view class="weui-form-preview__ft">
+          <navigator url="address-add?companyId={{companyId}}" class="weui-form-preview__btn weui-form-preview__btn_primary">新增地址</navigator>   
+        </view>
+      </view>
+      <!-- 操作 -->
+     
+    </view>
+  </view>

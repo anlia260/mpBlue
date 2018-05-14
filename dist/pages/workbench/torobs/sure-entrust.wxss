@@ -1,0 +1,2 @@
+@import "./../../../components/zan-toptips.wxss";
+.zan-link{text-align:center;padding:10px;font-size:14px;text-decoration:underline}.zan-link>view{text-decoration:underline}

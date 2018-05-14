@@ -1,0 +1,25 @@
+
+  <view class="container page">
+      
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+     <view class="page__bd">
+       <view class="zan-panel">
+           <!-- 卡片右侧详情描述 -->
+           <view class="zan-cell zan-cell--access">
+               <view class="zan-cell__bd">{{name}}邀请您加入</view>
+           </view>
+           <view class="company-info">
+               <image class="logo" src="{{company.logo}}" mode="aspectFit"/>
+               <view class="detail">
+                   {{company.companyName}}
+               </view>
+           </view>
+       </view>
+       <view class="weui-form-preview footer-button">
+         <view class="weui-form-preview__ft">
+           <view bindtap="handleSubmit" class="weui-form-preview__btn weui-form-preview__btn_primary">接受</view>
+         </view>
+       </view>
+    </view>
+  </view>

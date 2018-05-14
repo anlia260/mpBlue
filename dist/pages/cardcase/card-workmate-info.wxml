@@ -1,0 +1,47 @@
+
+  <view class="container page">
+    <view class="zan-panel">
+      <view class="weui-panel__bd">
+        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="{{cardInfo.userLogo}}"/>
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">{{cardInfo.name}}</view>
+            <view class="weui-media-box__desc">{{cardInfo.companyName}}</view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <view class="zan-panel">
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">电话</view>
+        <view class="zan-cell__bd" bindtap="callMumber" data-wpycallmumber-a="{{cardInfo.phone}}">{{cardInfo.phone}}</view>
+        <!--<view class="zan-cell__ft"><view class="zan-icon zan-icon-phone" bindtap="callMumber({{cardInfo.phone}})"></view></view>-->
+      </view>
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">邮箱</view>
+        <view class="zan-cell__bd">{{cardInfo.email}}</view>
+      </view>
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">手机</view>
+        <view class="zan-cell__bd" bindtap="callMumber" data-wpycallmumber-a="{{cardInfo.phone}}">{{cardInfo.phone}}</view>
+        <!--<view class="zan-cell__ft"><view class="zan-icon zan-icon-phone" bindtap="callMumber({{cardInfo.phone}})"></view></view>-->
+      </view>
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">地址</view>
+        <view class="zan-cell__bd">{{cardInfo.address}}</view>
+      </view>
+    </view>
+    <view class="weui-form-preview footer-button">
+      <view class="weui-form-preview__ft">
+        <view class="weui-form-preview__btn weui-form-preview__btn_primary" bindtap="toggleActionsheet">委托事务</view>
+      </view>
+    </view>
+      <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+          <block  wx:for-items="{{actionSheetItems}}" wx:key="*this">
+              <action-sheet-item class="item" bindtap="{{item.eve}}">{{item.name}}</action-sheet-item>
+          </block>
+          <action-sheet-cancel class="cancel" bindtap="toggleActionsheet">取消</action-sheet-cancel>
+      </action-sheet>
+  </view>

@@ -1,0 +1,2 @@
+@import "./../../components/zan-toptips.wxss";
+.zan-card__left-col{margin-right:60px}.company-info{text-align:center;padding:40px}.company-info .logo{width:70px;height:70px}.company-info .detail{margin-top:20px}.footer-button{position:absolute;width:100%;bottom:0}

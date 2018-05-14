@@ -1,0 +1,84 @@
+
+    <view class="container page">
+        <view class="page__bd">
+            <view class="weui-panel weui-panel_access ">
+                <navigator url="todo">
+                    <view class="weui-panel__ft">
+                        <view class="weui-cell weui-cell_access weui-cell_link">
+                            <view class="weui-cell__hd">
+                               <image class="icon" src="../../static/images/nav/todo.png"/> 
+                            </view>
+                            <view class="weui-cell__bd customFont"> 待办工作</view>
+                            <view  wx:if="{{workNum}}" class="weui-badge weui-badge_dot badge_dot_costum"/>
+                            <view class="weui-cell__ft  {{workNum && workNum > 0 ? '':'weui-cell__ft_in-access'   }} ">
+                                <view  wx:if="{{workNum}}" class="badge_dot_msg titleinfo">{{workNum}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+                <navigator url="torob">
+                    <view class="weui-panel__ft">
+                        <view class="weui-cell weui-cell_access weui-cell_link">
+                            <view class="weui-cell__hd">
+                               <image class="icon" src="../../static/images/nav/toget.png"/> 
+                            </view>
+                            <view wx:if="{{entrustNum}}" class="weui-badge weui-badge_dot badge_dot_costum"/>
+                            <view class="weui-cell__bd customFont">待抢工作</view>
+                            <view class="weui-cell__ft  {{  entrustNum &&entrustNum >0? '' :'weui-cell__ft_in-access'  }} ">
+                                <view wx:if="{{entrustNum}}" class="badge_dot_msg titleinfo">{{entrustNum}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+                <navigator url="logging/logging-list">
+                    <view class="weui-panel__ft">
+                        <view class="weui-cell weui-cell_access weui-cell_link">
+                            <view class="weui-cell__hd">
+                                <image class="icon" src="../../static/images/nav/record.png"/> 
+                            </view>
+                            <view class="weui-cell__bd customFont">工作记录</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access">
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="weui-panel weui-panel_access">
+                <navigator url="entrust/manager">
+                    <view class="weui-panel__ft">
+                        <view class="weui-cell weui-cell_access weui-cell_link">
+                            <view class="weui-cell__hd">
+                                <image class="icon" src="../../static/images/nav/entrust.png"/> 
+                            </view>
+                            <view class="weui-cell__bd customFont">工作委托</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"/>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="weui-panel weui-panel_access">
+                <navigator url="inkpad/index">
+                    <view class="weui-panel__ft">
+                        <view class="weui-cell weui-cell_access weui-cell_link">
+                            <view class="weui-cell__hd">
+                                <image class="icon" src="../../static/images/nav/print.png"/> 
+                            </view>
+                            <view class="weui-cell__bd customFont">打印台</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"/>
+                        </view>
+                    </view>
+                </navigator>
+                <navigator url="saoyisao/scanindex">
+                    <view class="weui-panel__ft">
+                        <view class="weui-cell weui-cell_access weui-cell_link">
+                            <view class="weui-cell__hd">
+                                <image class="icon" src="../../static/images/scan.png" style="width:27px;height:27px;"/> 
+                            </view>
+                            <view class="weui-cell__bd customFont">扫一扫</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"/>
+                        </view>
+                    </view>
+                </navigator>
+            </view> 
+        </view>
+    </view>

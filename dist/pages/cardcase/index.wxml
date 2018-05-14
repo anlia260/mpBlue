@@ -1,0 +1,52 @@
+
+  <view class="container">
+    <view class="page__bd">
+      <view class="weui-panel weui-panel_access">
+        <navigator url="./card-new" hover-class="weui-cell_active">
+            <view class="weui-panel__ft">
+                <view class="weui-cell weui-cell_access weui-cell_link  customFont">
+                    <view class="weui-cell__hd">
+                      <image class="icon" src="../../static/images/nav/card-new.png"/>
+                    </view>
+                    <view class="weui-cell__bd">新的名片</view>
+                </view>
+            </view>
+          </navigator>
+        <navigator url="./card-mine" hover-class="weui-cell_active">
+            <view class="weui-panel__ft">
+                <view class="weui-cell weui-cell_access weui-cell_link  customFont">
+                    <view class="weui-cell__hd">
+                      <image src="../../static/images/nav/card-my.png" class="icon"/>
+                    </view>
+                    <view class="weui-cell__bd">我的名片</view>
+                </view>
+            </view>
+          </navigator>
+        <navigator url="./card-workmate" hover-class="weui-cell_active">
+            <view class="weui-panel__ft">
+                <view class="weui-cell weui-cell_access weui-cell_link customFont">
+                    <view class="weui-cell__hd">
+                      <image src="../../static/images/nav/workmate.png" class="icon"/>
+                    </view>
+                    <view class="weui-cell__bd">我的同事</view>
+                </view>
+            </view>
+          </navigator>
+      </view>
+
+      <view  wx:for="{{cardList}}" wx:key="{{company}}" class="card">
+        <view class="weui-cells__title  ">{{item.company.name}}</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view wx:for="{{item.cards}}" wx:key="{{parterId}}" wx:for-item="card" class="weui-cell" bindtap="cardInfo" data-wpycardinfo-a="{{card}}">
+            <view class="weui-cell__hd"><image src="{{card.userLogo}}" class="icon"/></view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>{{card.note ? card.note :card.name}}</view>
+              <view wx:if="{{card.toCompanyType ===  2}}" style="font-size: 13px;color: #888888;">{{card.toCompanyName}}</view>
+            </view>
+            <view class="weui-cell__ft"/>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>

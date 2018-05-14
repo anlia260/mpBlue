@@ -1,0 +1,17 @@
+
+  <view class="container">
+    <view class="weui-msg">
+        <view class="weui-msg__icon-area">
+            <icon type="success" color="#004a9f" size="93"/>
+        </view>
+        <view class="weui-msg__text-area">
+            <view class="weui-msg__title">已完成</view>
+            <view class="weui-msg__desc" bindtap="formatto">本区域拣货已完成<text class="weui-msg__link">去新的区域分拣</text></view>
+        </view>
+        <view class="weui-msg__extra-area">
+            <view class="weui-footer">
+                <view class="weui-footer__text">Copyright © 2018-2028 </view>
+            </view>
+        </view>
+    </view>
+  </view>

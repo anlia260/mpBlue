@@ -1,0 +1,25 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- input tab -->
+        <view hidden="{{isChoose}}">
+            <view class="zan-panel">
+                <view class="zan-cell zan-form__item">
+                    <input bindinput="code" focus="true" value="{{barCode}}" class="zan-form__input zan-cell__bd" placeholder="扫描包装箱"/>
+                  <!--   <view wx:if="{{!barCode}}" bindtap="scanQr" class="zan-icon zan-icon-qr"></view>
+                    <button wx:else bindtap="getPackageBox" class="zan-btn zan-btn--mini zan-btn--primary zan-btn--plain">确认</button>-->
+                </view>
+            </view>
+            <view style="margin-top:10px"> 
+                <view class="zan-cell__bd zan-link zan-c-blue custom" bindtap="scanQr">切换成扫描模式</view>  
+            </view>  
+            <view style="margin-top:10px"> 
+                 <view class="zan-cell__bd zan-link zan-c-blue custom" bindtap="handleSkip"> 跳过</view>
+            </view> 
+             <view class="page__bd page__bd_spacing" style="margin-top:30px;">
+                 <button class="weui-btn   primary" bindtap="getPackageBox">确认</button>
+            </view> 
+        </view> 
+    </view>

@@ -1,0 +1,69 @@
+
+    <view class="container page">
+        <view class="page__bd">
+            <!-- 公司详情：todo 编辑公司 -->
+            <view class="weui-panel weui-panel_access">
+                <view class="weui-panel__bd">
+                    <view bindtap="handleEditCampany" class="weui-media-box weui-media-box_appmsg cellinfo" hover-class="weui-cell_active">
+                        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                            <image class="weui-media-box__thumb" src="{{ company.logo }}"/>
+                        </view>
+                        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                            <view class="weui-media-box__title">{{ company.companyName }}</view>
+                        </view>
+                        <view class="weui-cell__ft weui-cell__ft_in-access"/>
+                    </view>
+                </view>
+            </view>
+            <!-- 公司详情：地址列表 -->
+            <view style="margin:10px 0 50px 0;">
+                <view  wx:for="{{addressList}}" wx:key="addressId" class="weui-panel weui-panel_access address-detail">
+                    <view class="weui-panel__bd">
+                        <view wx:if="{{item.addressType!=2  }}">
+                            <view class="zan-cell zan-cell--access cellinfo">
+                                <view class="zan-cell__bd cellinfo">
+                                    <view class="zan-cell__text">{{ item.addressName }}</view>
+                                    <view class="zan-cell__desc">{{ item.address || "暂无地址" }}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <navigator wx:else url="depot?addressId={{item.addressId}}&companyId={{company.companyId}}">
+                            <view class="zan-cell zan-cell--access  cellinfo">
+                                <view class="zan-cell__bd cellinfo">
+                                    <view class="zan-cell__text">{{ item.addressName }}</view>
+                                    <view class="zan-cell__desc">{{ item.address }}</view>
+                                </view>
+                                <view class="zan-cell__ft"/>
+                            </view>
+                        </navigator>
+                    </view>
+                    <view class="weui-cell weui-cell_access  defaultinfo">
+                        <view class="weui-cell__bd  defaultinfo">
+                            <checkbox-group bindchange="setDefault" data-wpysetdefault-a="{{item}}">
+                                <label class="weui-cell weui-check__label">
+                                    <checkbox class="weui-check" value="{{item.isDefault}}" checked="{{item.isDefault === 1}}"/>
+                                    <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                                    <icon class="weui-icon-checkbox_circle" type="circle" size="13" wx:if="{{item.isDefault === 2}}"/>
+                                    <icon class="weui-icon-checkbox_success" type="success" color="#004a9f" size="13" wx:if="{{item.isDefault === 1}}"/>
+                                    </view>
+                                    <view class="weui-cell__bd">{{item.isDefault === 1 ? '默认地址' : '设为默认'}}</view>
+                                </label>
+                            </checkbox-group>
+                        </view>
+                        <view class="weui-cell__ft">
+                            <button wx-if="{{item.isCanOper === 1}}" class="weui-btn mini-btn" type="default" size="mini" bindtap="handleEdit" data-wpyhandleedit-a="{{item}}">编辑</button>
+                        </view>
+                    </view>
+                </view>
+                <view wx-if="{{addressList.length === 0 && type !=1}}" class="weui-loadmore weui-loadmore_line">
+                    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无地址数据</view>
+                </view>
+            </view>
+            <!-- 操作区域 -->
+            <view class="weui-form-preview footer-button">
+                <view class="weui-form-preview__ft">
+                    <navigator url="address-list?companyId={{company.companyId}}" class="weui-form-preview__btn weui-form-preview__btn_primary">添加</navigator>
+                </view>
+            </view>
+        </view>
+    </view>

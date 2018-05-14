@@ -1,0 +1,2 @@
+@import "./../../../../components/zan-toptips.wxss";
+.list{margin-top:10px}.list .desc-input-max-length{max-width:180px}.zan-icon-checked{color:#ccc;font-size:22px;margin-right:10px;vertical-align:center}.zan-icon-checked.active{color:#38f}.footer-button{background:#fff;border-top:1px solid #e5e5e5}.check-all .zan-icon-checked{vertical-align:middle;margin-left:15px;margin-right:5px}

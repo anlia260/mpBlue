@@ -1,0 +1,394 @@
+<style lang="less">
+/**app.wxss**/
+
+view,
+input,
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #27364e; /* 字体颜色 */
+}
+/*
+#27364e 字体颜色深蓝
+#939aa6 深色边框线
+#e6e6e6 输入框等浅色边框线
+#f55d55主色红色
+#FAAEAA 浅色红色13335069822
+ */
+input {
+  border: solid 1px #e6e6e6; /* 输入框颜色 */
+  padding-left: 10rpx;
+  z-index: 0;
+}
+.allpage {
+  height: 100vh;
+  /* background-color: #333; */
+  flex-direction: column;
+}
+
+.top {
+  opacity: 0.9;
+  height: 85rpx;
+  width: 100%;
+  border-bottom: 1px solid #939aa6; /*深色边线*/
+  justify-content: space-between; /*主轴上的排列方式 */
+  align-items: stretch; /*交叉轴对齐方式 占满 */
+}
+
+.Fpage {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.Ftop {
+  opacity: 0.9;
+  position: fixed;
+  height: 85rpx;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  background-color: #fdfdfd;
+  justify-content: space-between; /*主轴上的排列方式 */
+  align-items: stretch; /*交叉轴对齐方式 占满 */
+}
+
+.topl {
+  font-size: 32rpx;
+  width: 150rpx;
+  color: #f55d55; /*主色红色 #FAAEAA 浅色红色 */
+}
+
+.topc {
+  width: 350rpx;
+  flex-grow: 1;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.topr {
+  width: 160rpx;
+  font-size: 32rpx;
+  color: #f55d55;
+}
+
+.topr image {
+  margin-left: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.body {
+  width: 100%;
+  /* background-color: #fd6969; */
+  flex-grow: 1;
+}
+
+.INP {
+  border: solid 1px #939aa6;
+  height: 85rpx;
+  width: 450rpx;
+  padding-left: 10rpx;
+}
+
+.BUT {
+  background-color: #f55d55;
+  color: #fff;
+  width: 460rpx;
+  height: 80rpx;
+  font-size: 36rpx;
+}
+.SBUT {
+  background-color: #f55d55;
+  color: #fff;
+  width: 200rpx;
+  font-size: 22rpx;
+  border-radius: 5rpx;
+  &.hide {
+    display: none;
+  }
+}
+.TiShi {
+  height: 100vh;
+  width: 750rpx;
+  position: fixed;
+  z-index: 100;
+}
+.TiShiK {
+  position: relative;
+  height: 100vh;
+  width: 750rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.TiShiB {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 750rpx;
+  height: 100vh;
+  background: #fff;
+  opacity: 0.05;
+}
+.TiShiN {
+  width: 285rpx;
+  height: 285rpx;
+  z-index: 10;
+  border-radius: 20rpx;
+  margin-top: -330rpx;
+  opacity: 0.8;
+  position: relative;
+}
+.TiShiN image {
+  height: 280rpx;
+  width: 280rpx;
+  border-radius: 20rpx;
+}
+.TiShiTXT {
+  width: 280rpx;
+  height: 50rpx;
+  color: #ffffff;
+  position: absolute;
+  top: 200rpx;
+  left: 0rpx;
+}
+.footer-button {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.sbody {
+  width: 730rpx;
+  margin-top: 100rpx;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.huise {
+  //   background: #e6e6e6;
+  height: 100vh;
+}
+.hang {
+  height: 100rpx;
+  width: 100%;
+  background: #fff;
+  border-bottom: solid 1px #666;
+}
+.hang2 {
+  height: 180rpx;
+  width: 100%;
+  background: #fff;
+  border-bottom: solid 1px #666;
+}
+.TOU {
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  justify-content: center;
+  margin: 1px 0 1px 0;
+}
+.FF {
+  background: #fff;
+}
+.ly {
+  display: block;
+  width: 280rpx;
+  padding-left: 100rpx;
+}
+.xh {
+  width: 60rpx;
+  height: 60rpx;
+  padding-right: 60rpx;
+}
+.T1 {
+  height: 50rpx;
+  padding-left: 50rpx;
+  margin-top: 50rpx;
+}
+</style>
+
+<template>
+    <view class="container">
+        <zanToptips/>
+        <view class='Fpage huise'>
+            <view class='Ftop'>
+                <view class='topl' @tap='tuichu'>返回</view>
+                <view class='topc'>蓝牙打印</view>
+                <view class='topr'></view>
+            </view>
+            <view class='sbody'>
+                <view class='TOU'>
+                    <button class='BUT' bindtap='openP'>搜 索</button>
+                </view>
+                <view class='TOU FF'>
+                    <text>{{LYData.TS}}</text>
+                </view>
+                <view class='hang' wx:for="{{LYSB}}" wx:key="{{index}}" hidden='{{item.dis}}'>
+                    <text class='ly'>{{item.name}}</text>
+                    <image class='xh' src='./modao/{{item.tp}}.png'></image>
+                    <button  hidden ="{{item.LJ ==='0' ? false : true }}" bindtap='lianjie' data-uuid='{{item.id}}' class='SBUT'>连 接</button>
+                    <button  hidden ="{{item.LJ ==='1' ? false : true }}" disabled='true' class='SBUT'>正在连接</button>
+                    <button  hidden ="{{item.LJ ==='2' ? false : true }}" bindtap='duankai' data-uuid='{{item.id}}'  class='SBUT'>断 开</button>
+                    <button  hidden ="{{item.LJ ==='3' ? false : true }}" disabled='true' class='SBUT'>连接失败</button>
+                </view>
+                <view class='TOU'>
+                    <button class='BUT' bindtap='Printg'>打印测试页</button>
+                </view>
+                <view class='TOU'>
+                    <button class='BUT' bindtap='PrintgContainer'>容器</button>
+                </view>
+                <view class='TOU'>
+                    <button class='BUT' bindtap='PrintTag'>出库标签</button>
+                </view>
+                <view class='TOU'>
+                    <button class='BUT' bindtap='PrintNum'>货号</button>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from "wepy";
+import WxexMixins from "@/mixins/wxex";
+
+const BL = require("./lanya.js");
+const pos = require("./pos.js");
+
+function tim(that) {
+  that.setData({
+    LYData: BL.GETData(),
+    LYSB: BL.GETSB()
+  });
+  //console.log(BL.BLData)
+  setTimeout(function() {
+    tim(that);
+  }, 500);
+}
+
+function printText() {
+  console.log("开始打印");
+  pos.PrintText("1"); //打印标题
+  //   pos.PrintJumpLines(5);
+  //   pos.PrintTitle(" 超市名(可自定义)"); //打印标题
+  //   pos.PrintNameValue("单号: ", "ls0220180125000001");
+  //   pos.PrintText("收银员: 1001    机器编号: 001"); //打印标题
+  //   pos.PrintNameValue("时间: ", "2017-12-23 12:01:01");
+  //   pos.PrintText("品名   数量    单价         小计");
+  //   pos.PrintMiddleText("--------------------------------");
+  //   pos.PrintText("可口可乐(听)");
+  //   pos.PPP("2.0", "2", "4.00");
+  //   pos.PrintText("大泽山葡萄(kg)");
+  //   pos.PPP("12.8", "2.0", "25.6");
+  //   pos.PrintText("大泽山葡萄(盒)");
+  //   pos.PPP("30", "2.0", "60.0");
+  //   pos.PrintMiddleText("--------------------------------");
+  //   pos.PrintNameValue("合计数量: ", "6.0");
+  //   pos.PrintNameValue("标价金额: ", "128.8");
+  //   pos.PrintText("合计优惠(促销/特价等):  -2.3");
+  //   pos.PrintNameValue("合计应收: ", "126.5");
+  //   pos.PrintNameValue("实际收款: ", "126.5");
+  //   //pos.PrintNameValue('优惠(抹零): ', '0.5');
+  //   pos.PrintMiddleText("--------------------------------");
+  //   pos.PrintText("收款明细: "); //打印标题
+  //   pos.PrintNameValue("现金: ", "100");
+  //   pos.PrintNameValue("微信刷卡: ", "26.5");
+  //   //pos.PrintNameValue('零钱包支付: ', '0.5');
+  //   //pos.PrintNameValue('现金找零: ', '4.0');
+  //   pos.PrintMiddleText("--------------------------------");
+  //   pos.PrintNameValue("会员卡: ", "132****8588");
+  //   //pos.PrintNameValue('支付前余额: ', '5.00');
+  //   pos.PrintNameValue("当前可用余额: ", "4.5");
+  //   pos.PrintNameValue("本次积分: ", "12.0");
+  //   pos.PrintNameValue("当前可用积分: ", "285.0");
+  //   pos.PrintMiddleText("--------------------------------");
+  //   pos.PrintText("谢谢您的惠顾,欢迎下次光临!"); //打印标题
+  //   pos.PrintQRcode("http://xxx.xxx.xxx"); //二维码
+  //   pos.PrintJumpLines(3);
+  //   pos.PrintBarcode("13280828588"); //条码
+  //   pos.PrintJumpLines(5);
+  pos.DaYin();
+}
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: "蓝牙测试"
+  };
+  mixins = [WxexMixins];
+  data = {
+    LYData: {
+      openOK: false, //蓝牙是否打开
+      BLZT: false, //蓝牙状态是否可用
+      BLSO: false, //蓝牙是否正在搜索
+      TS: ""
+    },
+    LYSB: []
+  };
+  methods = {
+    tuichu: () => {
+      this.backUrl("inkpad/index");
+    }
+  };
+  onLoad() {
+    console.log(pos);
+  }
+  onShow() {
+    //BL.zdlj();
+  }
+  onUnload() {
+    //BL.stopBL();
+  }
+  goto(event) {
+    util.goto(event);
+  }
+  openP(e) {
+    BL.OpenPrint();
+    tim(this);
+  }
+  lianjie(e) {
+    console.log("连接按钮", e);
+    var uuid = e.currentTarget.dataset.uuid;
+    console.log("连接按钮uuid", uuid);
+    BL.lianjie(uuid);
+    //BL.dellb(e.currentTarget.dataset.ite);
+  }
+  duankai(e) {
+    var uuid = e.currentTarget.dataset.uuid;
+    BL.duankai(uuid);
+  }
+  Printg() {
+    printText();
+  }
+
+  //打印标签
+  PrintTag() {
+    pos.PrintMiddleText("--------------------------------");
+    pos.PrintTitle(`哈哈（编号）:SN-AAOWKIJI`); //编号
+    pos.PrintText("莘朱路八号朱路八号朱路八号朱路八号");
+    pos.PrintQRcode("SN-AAOWKIJI"); //二维码
+    pos.PrintText("镇州市北京村大酒店");
+    pos.PrintNameValue("单号: ", "SN-AAOWKIJI");
+    pos.DaYin();
+  }
+  PrintgContainer() {
+    pos.PrintMiddleText("--------------------------------");
+    pos.PrintJumpLines(1);
+    pos.PrintQRcode("州市北京村大"); //二维码
+    pos.PrintJumpLines(1);
+    pos.PrintTitle(` SN-AAOWKIJI`); //编号
+    pos.PrintJumpLines(2);
+    pos.PrintMiddleText("--------------------------------");
+    pos.DaYin();
+  }
+
+  PrintNum() {
+    pos.PrintJumpLines(2);
+    pos.PrintQRcode("AAOWKIJI"); //二维码
+    pos.PrintJumpLines(2);
+    pos.PrintTitle(` QQ-AAOWKIJI`); //编号
+    pos.PrintJumpLines(3);
+    pos.DaYin();
+  }
+}
+</script>

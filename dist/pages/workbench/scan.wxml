@@ -1,0 +1,21 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- input tab -->
+        <view hidden="{{isChoose}}">
+            <view class="zan-panel">
+                <view class="zan-cell zan-form__item">
+                    <input bindinput="code" value="{{barCode}}" class="zan-form__input zan-cell__bd" placeholder="扫描容器或者货号"/>
+                    <view  wx:if="{{!barCode}}" bindtap="scanQr" class="zan-icon zan-icon-qr"/>
+                    <button  wx:else bindtap="getPackage" class="zan-btn zan-btn--mini zan-btn--primary zan-btn--plain">确认</button>
+                </view>
+            </view>
+        </view>
+        <!-- input end -->
+        <view class="zan-link zan-c-blue footer-button">
+            <view bindtap="handleHide"> 切换为填写模式</view>
+            <!-- <view bindtap="handleChoose" class="zan-pull-right"> 确认</view> -->
+        </view>
+    </view>

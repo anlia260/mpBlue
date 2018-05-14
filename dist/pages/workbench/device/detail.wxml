@@ -1,0 +1,65 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- form-start -->
+        <view class="zan-panel" style="margin-top:0px;">  
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">库位</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" disabled value="{{deviceInfo.positionSn}}" class="weui-input" placeholder="库位"/>
+                        </view>
+                    </view>
+                </view> 
+        </view>
+        <!-- detail-start -->
+        <view class="zan-panel">
+            <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">容器</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" disabled value="{{deviceInfo.deviceSn}}" class="weui-input" placeholder="容器"/>
+                        </view>
+                    </view>
+            </view>
+            <view  wx:for="{{list}}" wx:key="{{goodNo}}">
+              <view class="weui-panel__bd zan-cell" style="padding:5px 15px 5px 15px">
+                <view class="thumb  ">
+                    <image class="img" src="../../../static/images/thing.png" mode="aspectFit"/>
+                </view>
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row">
+                        <view class="zan-card__right-col"><text>{{item.num}}</text></view>
+                        <view class="zan-card__left-col "> {{item.goodName}}  </view>
+                    </view> 
+                    <view class="zan-card__detail-row zan-c-gray-darker">
+                        <view class="zan-card__right-col">   </view>
+                        <view class="zan-card__left-col"> {{item.goodNo}}  </view>
+                    </view> 
+                </view>
+              </view>
+              <view class="weui-panel__bd zan-cell" style=" border-bottom: 1rpx solid #e5e5e5;padding:5px  0 5px 0; ">
+                <view class="zan-card__detail ">
+                    <view class="zan-card__left-col "> </view>
+                    <view class="zan-card__right-col" style="margin-right:5px; "> 
+                      <button class="zan-btn zan-btn--small zan-btn--plain" style="font-size:13px" bindtap="createInventory" data-wpycreateinventory-a="{{item}}">生成盘点</button>
+                      <button class="zan-btn zan-btn--small  zan-btn--plain" bindtap="unshellf" style="font-size:13px" data-wpyunshellf-a="{{item}}">下架</button>      
+                    </view>
+                </view> 
+              </view> 
+            </view>  
+        </view>
+        <view style=" min-height:60px;background-color:#f8f8f8;"> </view> 
+        <!-- list item-end --> 
+        <view class="weui-form-preview footer-button  bottom-box ">
+            <view class="weui-form-preview__ft">
+                <button bindtap="handleSubmit" class="weui-form-preview__btn weui-form-preview__btn_primary">连容器下架</button>
+            </view>
+        </view>
+    </view>

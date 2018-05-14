@@ -1,0 +1,47 @@
+
+    <view class="container">
+        <view class="serach-bar ">
+            <view class="serach-type" bindtap="changeChonse">
+                <view class="  zan-pull-left ">
+                    {{workTypes[typeIndex].areaName}}
+                </view>
+                <view class="gl"/>
+            </view>
+
+            <view class="serach-btn zan-pull-right" bindtap="getLoggingList">
+                搜索
+            </view>
+        </view>
+        <scroll-view scroll-y class="scroll-view" style="height:calc(100% - 41px)" bindscrolltolower="lower" bindscroll="scroll">
+            <view  wx:for="{{loggingList}}" wx:key="*this" wx:for-item="log">
+                <view class="{{log.scroll < scrollTop ? log.scrollNext >= scrollTop ? 'zan-panel-title fixed zan-pannel-titileinfo' : 'zan-panel-title zan-pannel-titileinfo' : 'zan-panel-title zan-pannel-titileinfo'}}">{{log.areaName}}区</view>
+                <view class="zan-panel">
+                    <view class="weui-panel__ft" wx:for="{{log.data}}" wx:key="*this" bindtap="catInfo" data-wpycatinfo-a="{{item}}">
+                        <view class="weui-cell weui-cell_access weui-cell_link">
+                            <view class="weui-cell__bd customFont labelinfo" style="white-space:nowrap;text-align:left;">容器: {{item.name}}</view>
+                            <view class="weui-cell__ft" style="margin-left:16px;word-break:break-all;text-align:left;">{{ item.sum }}件</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </scroll-view>
+        <!-- POP -->
+        <view class="zan-popup zan-popup--bottom {{ showPop ? 'zan-popup--show' : ''}}">
+            <view class="zan-popup__mask" bindtap="changeChonse"/>
+            <view class="zan-popup__container">
+                <view class="zan-panel zan-panel--without-border">
+                    <view class="zan-icon zan-icon-close" bindtap="changeChonse"/>
+                    <view class="size-label-box ">
+                        <view class="label titleinfo">工作记录类型</view>
+                        <view class="label-item-box ">
+                            <view  wx:for="{{workTypes}}" wx:key="*this" wx:for-index="index" data-index="{{index}}" bindtap="handleTypeClick" class="titleinfo label-item  {{typeIndex == index ? 'active' : '' }}">
+                                {{item.areaName}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- POP END -->
+    </view>

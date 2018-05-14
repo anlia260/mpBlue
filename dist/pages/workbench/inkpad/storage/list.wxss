@@ -1,0 +1,2 @@
+@import "./../../../../components/zan-toptips.wxss";
+.mar0{margin-left:0}.fs14{font-size:14px}.btnpos{position:absolute;right:0;bottom:5px}

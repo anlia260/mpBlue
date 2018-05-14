@@ -1,0 +1,65 @@
+
+    <view class="container">
+        <view class="zan-panel-title titleinfo">我委托的工作</view>
+        <view class="zan-panel panelinfo">
+            <view class="bages">
+                <view class="bage__item" bindtap="entrustInfo" data-wpyentrustinfo-a="1">
+                    <view class="bage__icon zan-badge">
+                        <image class="bage__image" src="../../../static/images/nav/torece.png"/>
+                        <view class="bage__label">
+                            待接受
+                        </view>
+                        <view class="zan-badge__count"  wx:if="{{  entrustInfo.iEntrustItNoAccepted> 0}}">{{entrustInfo.iEntrustItNoAccepted}}</view>
+                    </view>
+                </view>
+                <view class="bage__item" bindtap="entrustInfo" data-wpyentrustinfo-a="2">
+                    <view class="bage__icon zan-badge">
+                        <image class="bage__image" src="../../../static/images/nav/rece.png"/>
+                        <view class="bage__label">
+                            已接受
+                        </view> 
+                        <view class="zan-badge__count"  wx:if="{{  entrustInfo.iEntrustItAccepted> 0}}">{{entrustInfo.iEntrustItAccepted}}</view>
+                    </view> 
+                </view>
+                <view class="bage__item" bindtap="entrustInfo" data-wpyentrustinfo-a="3">
+                    <view class="bage__icon zan-badge">
+                        <image class="bage__image" src="../../../static/images/nav/finish.png"/>
+                        <view class="bage__label">
+                            已结束
+                        </view> 
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="zan-panel-title titleinfo">委托我的工作</view>
+        <view class="zan-panel panelinfo">
+            <view class="bages">
+                <view class="bage__item" bindtap="entrustInfoForMe" data-wpyentrustinfoforme-a="1">
+                    <view class="bage__icon zan-badge">
+                        <image class="bage__image" src="../../../static/images/nav/torece.png"/>
+                        <view class="bage__label">
+                            待接受
+                        </view>
+                        <view class="zan-badge__count" wx:if="{{  entrustInfo.entrustMeNoAccepted> 0}}">{{entrustInfo.entrustMeNoAccepted}} </view>
+                    </view>
+                </view>
+                <view class="bage__item" bindtap="entrustInfoForMe" data-wpyentrustinfoforme-a="2">
+                    <view class="bage__icon zan-badge">
+                        <image class="bage__image" src="../../../static/images/nav/rece.png"/>
+                        <view class="bage__label">
+                            已接受
+                        </view>
+                        <view class="zan-badge__count" wx:if="{{  entrustInfo.entrustMeAccepted  > 0}}">{{entrustInfo.entrustMeAccepted}}</view>
+                    </view>
+                </view>
+                <view class="bage__item" bindtap="entrustInfoForMe" data-wpyentrustinfoforme-a="3">
+                    <view class="bage__icon zan-badge">
+                        <image class="bage__image" src="../../../static/images/nav/finish.png"/>
+                        <view class="bage__label">
+                            已结束
+                        </view> 
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>

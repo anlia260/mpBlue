@@ -1,0 +1,45 @@
+
+  <view class="container page">
+     <view class="page__bd">
+         <view class="zan-panel">
+             <view class="zan-card">
+                 <view class="zan-card__thumb">
+                     <image class="zan-card__img" src="{{card.type ===1 ?card.userLogo:card.logo}}" mode="aspectFit"/>
+                 </view>
+                 <view class="zan-card__detail customFont" style="margin-top:5px">
+                     <view class="zan-card__detail-row">
+                         <view class="zan-card__right-col"/>
+                         <view class="zan-card__left-col zan-ellipsis--l2">
+                             {{card.name}}
+                         </view>
+                     </view>
+                     <view class="zan-card__detail-row zan-c-gray-darker detailInfo">
+                         <view class="zan-card__right-col"/>
+                         <view class="zan-card__left-col">
+                             {{card.companyName}}
+                         </view>
+                     </view>
+                     <view class="zan-card__detail-row zan-c-gray-darker detailInfo">
+                         <view class="zan-card__right-col"/>
+                         <view class="zan-card__left-col">
+                             {{card.phone}}
+                         </view>
+                     </view>
+                     <view class="zan-card__detail-row zan-c-gray-darker detailInfo">
+                         <view class="zan-card__right-col"/>
+                         <view class="zan-card__left-col">
+                             {{card.email}}
+                         </view>
+                     </view>
+                 </view>
+             </view>
+         </view>
+         <view class="zan-panel  "> 
+             <canvas class="icon" canvas-id="mycanvas"/>
+         </view>
+         <view class="share-button ">
+            <button class="zan-btn zan-btn--small " style="font-size:16px" open-type="share" data-url="{{card.logo}}" data-parterId="{{card.parterId}}" data-name="{{card.name}}" data-companyName="{{card.companyName}}">分享名片</button>
+         </view> 
+
+    </view>
+  </view>

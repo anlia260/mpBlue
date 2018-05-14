@@ -1,0 +1,53 @@
+<style lang="less">
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+</style>
+<template>
+  <view class="container">
+    名片夹
+  </view>
+</template>
+
+<script>
+import wepy from "wepy";
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: "名片夹"
+  };
+  components = {};
+
+  mixins = [];
+
+  data = {
+    mynum: 20
+  };
+
+  computed = {
+    now() {
+      return +new Date();
+    }
+  };
+
+  methods = {};
+
+  events = {};
+
+  onLoad() {}
+
+  onUnload() { } 
+}
+</script>

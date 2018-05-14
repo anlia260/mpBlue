@@ -1,0 +1,83 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <view class="zan-icon zan-icon-arrow" style="margin-right: 5px;vertical-align: top;width:20px; height: 20px;"/>
+                    </view>
+                    <view class="weui-cell__bd">委托给</view>
+                    <view class="weui-cell__ft">{{info.mate.name}}</view>
+                </view>
+            </view>
+        </view>
+
+        <!-- -start -->
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <view class="zan-icon zan-icon-wap-nav" style="margin-right: 5px;vertical-align: top;width:20px; height: 20px;"/>
+                    </view>
+                    <view class="weui-cell__bd">标题</view>
+                    <view class="weui-cell__ft">{{info.content.busyTypeText}}</view>
+                </view>
+                <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <view class="zan-icon zan-icon-description" style="margin-right: 5px;vertical-align: top;width:20px; height: 20px;"/>
+                    </view>
+                    <view class="weui-cell__bd">工作内容</view>
+                    <view class="weui-cell__ft">{{info.content.busyTypeText}}</view>
+                </view>
+                <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <view class="zan-icon zan-icon-exchange" style="margin-right: 5px;vertical-align: top;width:20px; height: 20px;"/>
+                    </view>
+                    <view class="weui-cell__bd">事务归属</view>
+                    <view class="weui-cell__ft">{{info.content.permCompanyName}}</view>
+                </view>
+                <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <view class="zan-icon zan-icon-location" style="margin-right: 5px;vertical-align: top;width:20px; height: 20px;"/>
+                    </view>
+                    <view class="weui-cell__bd">工作地址</view>
+                    <view class="weui-cell__ft">{{info.content.addressName}}</view>
+                </view>
+                <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <view class="zan-icon zan-icon-clock" style="margin-right: 5px;vertical-align: top;width:20px; height: 20px;"/>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <picker mode="date" value="{{startDate}}" start="" end="" bindchange="bindStartDateChange">
+                            <view class="picker">
+                                开始时间 {{startDate}}
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+
+                 <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <view class="zan-icon zan-icon-underway" style="margin-right: 5px;vertical-align: top;width:20px; height: 20px;"/>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <picker mode="date" value="{{endDate}}" start="" end="" bindchange="bindEndDateChange">
+                            <view class="picker">
+                                结束时间 {{endDate}}
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- -end -->
+
+        <view class="weui-form-preview footer-button">
+            <view class="weui-form-preview__ft">
+                <button bindtap="handleSubmit" class="weui-form-preview__btn weui-form-preview__btn_primary">确认</button>
+            </view>
+        </view>
+    </view>

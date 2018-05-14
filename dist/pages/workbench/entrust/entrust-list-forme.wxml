@@ -1,0 +1,124 @@
+
+    <view class="container">
+        <!-- <zanToptips/>-->
+        
+  <view class="zan-tab">
+    <block  wx:if="{{$zanTab$tab.scroll}}">
+      <scroll-view class="zan-tab__bd zan-tab__bd--scroll {{ $zanTab$fixed ? 'zan-tab__bd--fixed' : '' }}" scroll-x="true" style="height: {{ $zanTab$tab.height ? $zanTab$tab.height + 'px' : 'auto' }}">
+        <view wx:for="{{$zanTab$tab.list}}" wx:key="id" class="zan-tab__item {{$zanTab$tab.selectedId == item.id ? 'zan-tab__item--selected' : ''}}" data-component-id="{{$zanTab$componentId}}" data-item-id="{{item.id}}" bindtap="$zanTab$handleZanTabChange">
+          <view class="zan-tab__title">{{item.title}}</view>
+           <view wx:if="{{item.num}}" class="weui-badge" style="position: absolute;top: 1.1em;right:1.6em;font-size:9px;padding:0.14em 0.2em;">{{item.num}}</view>
+        </view>
+      </scroll-view>
+    </block>
+    <block  wx:else>
+      <view class="zan-tab__bd {{$zanTab$fixed ? 'zan-tab__bd--fixed' : ''}}">
+        <view wx:for="{{$zanTab$tab.list}}" wx:key="id" class="zan-tab__item {{$zanTab$tab.selectedId == item.id ? 'zan-tab__item--selected' : ''}}" data-component-id="{{$zanTab$componentId}}" data-item-id="{{item.id}}" bindtap="$zanTab$handleZanTabChange">
+          <view class="zan-tab__title">{{item.title}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+        <view  wx:if="{{tab.selectedId === '1'}}">
+            <view wx:if="{{entrustList}}" class="pannel-top">
+                 <view class="zan-panel  " wx:for="{{entrustList}}" wx:key="title">
+                    <view class="zan-card card-item">
+                        <view class="thumb">
+                            <image class="img" src="{{item.logoUrl}}" mode="aspectFit"/>
+                        </view>
+                        <view class="detail">
+                            <view class="text title">{{item.client +'的委托('+ item.beforeTime +')' }} </view>
+                            <view class="text titleDetail">限期：{{item.expireTime||""}}</view> 
+                        </view> 
+                        </view>
+                        <view class="zan-card card-item card-item-text" style="padding-top:0px;margin:0px 15px 5px 16px;" bindtap="catInfo" data-wpycatinfo-a="{{item}}">
+                        <view class="zan-card__detail" style="padding-top:3px">
+                        <view class="zan-card__detail-row zan-c-gray-darker">
+                                <!-- <view class="zan-card__right-col">{{item.busyType}}</view> -->
+                        <view class="title1"> 入库单：{{item.busySn}} {{item.workContent}} {{item.typeFormat}}
+                        </view>
+                        </view>
+                        <view class="zan-card__detail-row zan-c-gray-darker titleDetail">
+                            <view class="zan-card__left-col">{{item.companyName}}</view>
+                            <view class="zan-card__left-col">
+                                工作地址：{{item.addressName}}
+                            </view>
+                        </view>
+                        </view> 
+                    </view> 
+                     <view class="zan-card"> 
+                            <view class="zan-card__right-col ">
+                            <button class="zan-btn zan-btn--mini   zan-btn--plain titleinfo" data-entrustId="{{item.entrustId}}" bindtap="closeEntrust">拒绝</button>
+                            <button class="zan-btn zan-btn--mini zan-btn--warn  zan-btn--plain titleinfo" data-entrustId="{{item.entrustId}}" bindtap="openEntrust">接受</button> 
+                            </view> 
+                    </view> 
+                </view>                  
+            </view>
+        </view>
+        <view  wx:if="{{tab.selectedId === '2' && entrustList}}" class="pannel-top">
+                <view class="zan-panel  " wx:for="{{entrustList}}" wx:key="title">
+                    <view class="zan-card card-item">
+                        <view class="thumb">
+                            <image class="img" src="{{item.logoUrl}}" mode="aspectFit"/>
+                        </view>
+                        <view class="detail">
+                         <view class="text title"> {{item.client +'的委托('+ item.beforeTime +')' }} 
+                              
+                         </view>
+                        <view class="text titleDetail">限期：{{item.expireTime||""}}</view> 
+                        </view>
+                       
+                        </view>
+                        <view class="zan-card card-item card-item-text" style="padding-top:0px;margin:0px 15px 5px 16px;" bindtap="catInfo" data-wpycatinfo-a="{{item}}">
+                        <view class="zan-card__detail" style="padding-top:3px">
+                        <view class="zan-card__detail-row zan-c-gray-darker">
+                                <!-- <view class="zan-card__right-col">{{item.busyType}}</view> -->
+                        <view class="title1"> 入库单：{{item.busySn}} {{item.workContent}} {{item.typeFormat}}
+                        </view>
+                        </view>
+                        <view class="zan-card__detail-row zan-c-gray-darker titleDetail">
+                            <view class="zan-card__left-col">{{item.companyName}}</view>
+                            <view class="zan-card__left-col">
+                                工作地址：{{item.addressName}}
+                            </view>
+                        </view>
+                        </view> 
+                    </view> 
+                    
+                </view>     
+        </view>
+        <view wx:if="{{tab.selectedId === '3' && entrustList}}" class="pannel-top">
+                  <view class="zan-panel  " wx:for="{{entrustList}}" wx:key="title">
+                    <view class="zan-card card-item">
+                        <view class="thumb">
+                            <image class="img" src="{{item.logoUrl}}" mode="aspectFit"/>
+                        </view>
+                        <view class="detail">
+                        <view class="text title"> {{item.client +'的委托('+ item.beforeTime +')' }} </view>
+                        <view class="text titleDetail">限期：{{item.expireTime||""}}</view> 
+                        </view>
+                       
+                        </view>
+                        <view class="zan-card card-item card-item-text" style="padding-top:0px;margin:0px 15px 5px 16px;" bindtap="catInfo" data-wpycatinfo-a="{{item}}">
+                        <view class="zan-card__detail" style="padding-top:3px">
+                        <view class="zan-card__detail-row zan-c-gray-darker">
+                                <!-- <view class="zan-card__right-col">{{item.busyType}}</view> -->
+                        <view class="title1"> 入库单：{{item.busySn}} {{item.workContent}} {{item.typeFormat}}
+                        </view>
+                        </view>
+                        <view class="zan-card__detail-row zan-c-gray-darker titleDetail">
+                            <view class="zan-card__left-col">{{item.companyName}}</view>
+                            <view class="zan-card__left-col">
+                                工作地址：{{item.addressName}}
+                            </view>
+                        </view>
+                        </view> 
+                    </view> 
+                     
+                </view> 
+        </view>
+        <view wx:if="{{entrustList.length === 0}}" class="weui-loadmore  ">
+            <view class="weui-loadmore__tips  ">暂无数据</view>
+        </view>
+    </view>

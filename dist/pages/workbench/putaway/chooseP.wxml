@@ -1,0 +1,59 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- input tab -->
+        <view hidden="{{isChoose}}">
+            <view class="zan-panel" style="margin-top:0px;">
+                <view class="zan-cell zan-form__item">
+                    <input bindinput="code" value="{{barCode}}" class="zan-form__input zan-cell__bd" placeholder="输入库位/容器编号"/>
+                  <!--   <view wx:if="{{!barCode}}" bindtap="scanQr" class="zan-icon zan-icon-qr"></view>
+                    <button wx:else bindtap="setContainer" class="zan-btn zan-btn--mini zan-btn--primary zan-btn--plain">确认</button> -->
+                </view>
+            </view>
+             <view style="margin-top:10px">
+              <view class="zan-cell__bd zan-link zan-c-blue" bindtap="scanQr">切换成扫描模式</view>
+              <view class="zan-cell__ft zan-link zan-c-blue" bindtap="handleHide">空闲位置 </view>
+            </view> 
+             <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+                <button class="weui-btn   primary" bindtap="setContainer">确认</button>
+            </view>
+        </view>
+        <!-- input end -->
+        <!-- free tab -->
+        <view class="free-container" hidden="{{!isChoose}}">
+            <view class="zan-panel">
+                <view class="zan-cell  zan-pannel_infp">
+                    <picker bindchange="bindAreaChange" range-key="areaName" range="{{areaList}}" style="width:100%">
+                       
+                        <view class="weui-panel weui-panel_access" style=" position: static;">
+                              <view class="weui-cell weui-cell_access weui-cell_link" style="padding-left:0;position: static;"> 
+                                  <view class="weui-cell__bd customFont"> {{areaList[areaSort].areaName}}</view>
+                                  <view class="weui-cell__ft weui-cell__ft_in-access"/>
+                              </view>
+                          </view>
+                    </picker>
+                </view>
+            </view>
+
+            <!-- select-satrt -->
+            <view class="zan-select-list">
+                <view class="zan-select-item"  wx:for="{{potisonList}}" wx:key="areaId" wx:for-item="item"> 
+                    <view class="zan-panel">
+                        <view class="zan-cell" style="line-height:0.8" bindtap="bindDeviceChange" data-wpybinddevicechange-a="{{item}}">
+                            <view class="zan-cell__bd {{item.positionSn === barCode?'active':''}}">{{item.positionSn}}</view>
+                            <icon wx:if="{{item.positionSn === barCode }}" type="success_no_circle" color="red" size="14"/>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- select-end -->
+
+            <view class="zan-link zan-c-blue footer-button">
+                <view bindtap="handleHide"> 切换为填写模式</view>
+                <!-- <view bindtap="handleChoose" class="zan-pull-right"> 确认</view> -->
+            </view>
+        </view>
+        <!-- free end -->
+    </view>

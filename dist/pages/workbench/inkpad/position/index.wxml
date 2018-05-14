@@ -1,0 +1,69 @@
+
+    <view class="container">
+        <!-- <scroll-view
+            scroll-y style="height: {{windowHeight}}px;white-space:nowrap;"
+            upper-threshold="47"
+            scroll-y bindscroll="scroll" bindscrolltoupper="scrolltoupper"
+            scroll-top="{{scrollTop}}"> -->
+        <!-- <view class="sort-title" wx:if="{{scrollTop>47}}" bindtap="checkAll({{scrollTopText}})">
+            <view wx:if="{{listCheckedAll[scrollTopText]}}" class="zan-cell__icon zan-icon zan-icon-checked active"></view>
+            <view wx:else class="zan-cell__icon zan-icon zan-icon-checked"></view>
+            {{scrollTopText}}
+        </view> -->
+        <view>
+        <view class="clearfix" style="height:47px;border-bottom:1rpx solid #d7d6dc;">
+            <view class="zan-pull-left" style="width:28%;line-height:47px; text-align:center;">
+                <picker class="weui-input" mode="selector" bindchange="bindPickerChange" value="{{addressIndex}}" range="{{addressList}}" range-key="{{'addressName'}}">
+                    <view class="picker">
+                    {{addressList.length > 0 ? addressList[addressIndex].addressName: '暂无仓库'}}
+                    <view  wx:if="{{addressList.length > 0}}" style="transform: rotate(90deg);" class="zan-cell__icon zan-icon zan-icon-arrow"/>
+                    </view>
+                </picker>
+            </view>
+            <view class="weui-search-bar zan-pull-right" style="width:70%;border:0">
+                <view class="weui-search-bar__form">
+                    <view class="weui-search-bar__box">
+                        <icon class="weui-icon-search_in-box" type="search" size="14"/>
+                        <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping"/>
+                        <view class="weui-icon-clear"  wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                            <icon type="clear" size="14"/>
+                        </view>
+                    </view>
+                    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                        <icon class="weui-icon-search" type="search" size="14"/>
+                        <view class="weui-search-bar__text">搜索</view>
+                    </label>
+                </view>
+                <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+            </view>
+        </view>
+        <view class="list" wx:for="{{list}}" wx:key="{{name}}">
+            <view class="zan-panel-title clearfix" id="{{item.name}}">
+                <view class="zan-pull-left" bindtap="checkAll" style="width:70%" data-wpycheckall-a="{{item.name}}">
+                    <view wx:if="{{listCheckedAll[item.name]}}" class="zan-cell__icon zan-icon zan-icon-checked active"/>
+                    <view wx:else class="zan-cell__icon zan-icon zan-icon-checked"/>
+                    {{item.name}}
+                </view>
+                <view class="zan-pull-right" style="color:blue" bindtap="handleExpand" data-wpyhandleexpand-a="{{item.name}}">
+                    {{item.expand?'收起':'展开' }}
+                </view>
+            </view>
+            <view wx:if="{{item.expand}}" class="zan-panel" style="margin-top:5px;">
+                <view bindtap="checkItem" class="zan-cell" wx:for="{{item.value}}" wx:key="positionSn" data-wpycheckitem-a="{{item}}">
+                    <view wx:if="{{item.checked}}" class="zan-cell__icon zan-icon zan-icon-checked active"/>
+                    <view wx:else class="zan-cell__icon zan-icon zan-icon-checked"/>
+                    <view class="zan-cell__bd">{{item.positionSn}}</view>
+                </view>
+            </view>
+        </view>
+        </view>
+        <!-- </scroll-view> -->
+        <view class="weui-form-preview footer-button" wx:if="{{list.length > 0}}">
+            <view class="weui-form-preview__ft">
+                <view bindtap="printBlue" class="weui-form-preview__btn weui-form-preview__btn_primary">打印</view>
+            </view>
+        </view>
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+    </view>

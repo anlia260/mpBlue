@@ -1,0 +1,28 @@
+
+    <view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+        <view class="zan-dialog__mask" bindtap="toggleDialog"/>
+        <view animation="{{animationData}}" class="zan-dialog__container">
+            <view style="padding: 0; text-align: center;">
+                <view class="weui-form-preview">
+                    <view class="weui-form-preview__hd">
+                        <view class="weui-form-preview__label">发送给</view>
+                        <view class="weui-form-preview__value_in-hd">{{mate.name}}</view>
+                    </view>
+                    <view class="weui-form-preview__bd">
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">公司</view>
+                            <view class="weui-form-preview__value">{{content.permCompanyName || content.companyName}}</view>
+                        </view>
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">地址</view>
+                            <view class="weui-form-preview__value">{{content.addressName}}</view>
+                        </view>
+                    </view>
+                    <view class="weui-form-preview__ft">
+                        <view class="weui-form-preview__btn weui-form-preview__btn_default" bindtap="toggleDialog" hover-class="weui-form-preview__btn_active">取消</view>
+                        <view class="weui-form-preview__btn weui-form-preview__btn_primary" bindtap="handleEntrust" hover-class="weui-form-preview__btn_active">确认</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>

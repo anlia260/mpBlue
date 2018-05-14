@@ -1,0 +1,44 @@
+
+  <view class="container page">
+    <view class="zan-panel">
+      <view class="weui-panel__bd">
+        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="{{cardInfo.userLogo}}"/>
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">{{cardInfo.note ? cardInfo.note : cardInfo.name}}</view>
+            <view class="weui-media-box__desc">{{cardInfo.companyName}}</view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <view class="zan-panel">
+      <navigator url="./card-workmate-edit?id={{cardInfo.parterId}}&note={{cardInfo.note}}&parterId={{parterId}}" hover-class="weui-cell_active">
+        <view class="zan-cell zan-cell--access">
+            <view class="zan-cell__bd">设定备注</view>
+            <view class="zan-cell__ft">{{cardInfo.note ? cardInfo.note : ''}}</view>
+        </view>
+      </navigator>
+    </view>
+    <view class="zan-panel">
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">工作地址</view>
+        <view class="zan-cell__bd">{{cardInfo.address}}</view>
+      </view>
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">办公电话</view>
+        <view class="zan-cell__bd" bindtap="callMumber" data-wpycallmumber-a="{{cardInfo.officePhone}}">{{cardInfo.officePhone}}</view>
+        <!--<view class="zan-cell__ft"><view class="zan-icon zan-icon-phone" bindtap="callMumber({{cardInfo.officePhone}})"></view></view>-->
+      </view>
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">手机</view>
+        <view class="zan-cell__bd" bindtap="callMumber" data-wpycallmumber-a="{{cardInfo.phone}}">{{cardInfo.phone}}</view>
+        <!--<view class="zan-cell__ft"><view class="zan-icon zan-icon-phone" bindtap="callMumber({{cardInfo.phone}})"></view></view>-->
+      </view>
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__hd zan-form__title">邮箱</view>
+        <view class="zan-cell__bd">{{cardInfo.email}}</view>
+      </view>
+    </view>
+  </view>

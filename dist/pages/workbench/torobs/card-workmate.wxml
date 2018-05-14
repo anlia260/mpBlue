@@ -1,0 +1,71 @@
+
+    <view class="container page">
+         
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <view class="page__bd">
+            <view class="weui-search-bar">
+                <view class="weui-search-bar__form">
+                    <view class="weui-search-bar__box">
+                        <icon class="weui-icon-search_in-box" type="search" size="14"/>
+                        <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping"/>
+                        <view class="weui-icon-clear"  wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                            <icon type="clear" size="14"/>
+                        </view>
+                    </view>
+                    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"/>
+                    <view class="weui-search-bar__text">搜索</view>
+                  </label>
+                </view>
+                <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="enterInput">确定</view>
+            </view>
+            <view  wx:for="{{mateList}}" wx:key="{{company}}" class="card">
+                <view class="weui-cells__title">{{item.company.name}}</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view wx:for="{{item.mateList}}" wx:for-item="mate" wx:key="{{ucId}}" class="weui-cell" bindtap="cardInfo" data-wpycardinfo-a="{{mate}}">
+                        <view class="weui-cell__hd" style="position: relative ">
+                            <image class="icon" src="{{mate.userLogo}}"/>
+                        </view>
+                        <view class="weui-cell__bd weui-cell_primary">
+                            <view>{{mate.name}}</view>
+                        </view>
+                        <view class="weui-cell__ft"/>
+                    </view>
+                </view>
+            </view>
+            <view wx-if="{{mateList.length === 0}}" class="weui-loadmore weui-loadmore_line">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+            </view>
+        </view>
+
+        
+    <view class="zan-dialog {{ $torobDialog$showDialog ? 'zan-dialog--show' : '' }}">
+        <view class="zan-dialog__mask" bindtap="$torobDialog$toggleDialog"/>
+        <view animation="{{$torobDialog$animationData}}" class="zan-dialog__container">
+            <view style="padding: 0; text-align: center;">
+                <view class="weui-form-preview">
+                    <view class="weui-form-preview__hd">
+                        <view class="weui-form-preview__label">发送给</view>
+                        <view class="weui-form-preview__value_in-hd">{{$torobDialog$mate.name}}</view>
+                    </view>
+                    <view class="weui-form-preview__bd">
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">公司</view>
+                            <view class="weui-form-preview__value">{{$torobDialog$content.permCompanyName || $torobDialog$content.companyName}}</view>
+                        </view>
+                        <view class="weui-form-preview__item">
+                            <view class="weui-form-preview__label">地址</view>
+                            <view class="weui-form-preview__value">{{$torobDialog$content.addressName}}</view>
+                        </view>
+                    </view>
+                    <view class="weui-form-preview__ft">
+                        <view class="weui-form-preview__btn weui-form-preview__btn_default" bindtap="$torobDialog$toggleDialog" hover-class="weui-form-preview__btn_active">取消</view>
+                        <view class="weui-form-preview__btn weui-form-preview__btn_primary" bindtap="$torobDialog$handleEntrust" hover-class="weui-form-preview__btn_active">确认</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    </view>

@@ -1,0 +1,106 @@
+
+    <view class="container">
+        <zanToptips/>
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <view class="zan-icon zan-icon-arrow" style="margin-right: 5px;vertical-align: top;width:20px; height: 20px;"/>
+                    </view>
+                    <view class="weui-cell__bd">委托给</view>
+                    <view class="weui-cell__ft">{{workMate.name}}</view>
+                </view>
+            </view>
+        </view>
+
+        <!-- -start -->
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input weui-cell_vcode">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label labelinfo">
+                            <view class="zan-icon zan-icon-wap-nav" style="margin-right: 5px;vertical-align: top;width:20px; height: 20px;"/>
+                            标题
+                        </view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input class="weui-input inputstyle" value="{{addFrom.entrustName}}" maxlength="10" bindinput="inputName" placeholder="请输入标题"/>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input" style="padding-right:0px;">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label labelinfo"><view class="zan-icon zan-icon-description title"/>工作内容</view>
+                    </view>
+                    <view class="weui-cell__bd info">
+                        <view class="weui-input inputstyle" bindtap="showPop">{{workContent}}</view>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input" style="padding-right:0px;">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label labelinfo"><view class="zan-icon zan-icon-exchange title"/>事务归属</view>
+                    </view>
+                    <view class="weui-cell__bd  info">
+                        <picker bindchange="bindCompanyChange" value="{{companyIndex}}" range="{{companyList}}" range-key="{{'companyName'}}">
+                            <view class="weui-select inputstyle" style="border-right:none;padding :0px;">{{companyList[companyIndex].companyName}}</view>
+                        </picker>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input" style="padding-right:0px;">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label labelinfo"><view class="zan-icon zan-icon-location title"/>工作地址</view>
+                    </view>
+                    <view class="weui-cell__bd info ">
+                        <picker bindchange="bindAddressChange" value="{{addressIndex}}" range="{{addressList}}" range-key="{{'addressName'}}">
+                            <view class="weui-select inputstyle" style="border-right:none;padding:0px;">{{addressList[addressIndex].addressName}}</view>
+                        </picker>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input" style="padding-right:0px;">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label labelinfo"><view class="zan-icon zan-icon-clock title"/>开始时间</view>
+                    </view>
+                    <view class="weui-cell__bd info">
+                        <picker bindchange="bindStartChange" mode="date" value="{{addFrom.startDate}}" start="" end="">
+                            <view class="weui-select inputstyle" style="border-right:none;padding:0px;">{{addFrom.startDate}}</view>
+                        </picker>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input" style="padding-right:0px;">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label labelinfo"><view class="zan-icon zan-icon-underway title"/>结束时间</view>
+                    </view>
+                    <view class="weui-cell__bd  info">
+                        <picker bindchange="bindEndChange" mode="date" value="{{addFrom.endDate}}" start="" end="">
+                            <view class="weui-select inputstyle" style="border-right:none;padding:0px;">{{addFrom.endDate}}</view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- -end -->
+
+        <view class="weui-form-preview footer-button">
+            <view class="weui-form-preview__ft">
+                <button bindtap="handleSubmit" class="weui-form-preview__btn weui-form-preview__btn_primary">确认</button>
+            </view>
+        </view>
+
+        <!-- POP -->
+        <view class="zan-popup zan-popup--bottom {{ showPop ? 'zan-popup--show' : ''}}">
+            <view class="zan-popup__mask" bindtap="showPop"/>
+            <view class="zan-popup__container">
+                <view class="zan-panel zan-panel--without-border">
+                    <view class="zan-icon zan-icon-close" bindtap="showPop"/>
+                    <view class="size-label-box ">
+                        <view class="label titleinfo">工作内容</view>
+                        <view class="label-item-box ">
+                            <view  wx:for="{{workTypes}}" wx:key="id" wx:for-index="idx" data-name="{{item.title}}" data-perm="{{item.id}}" bindtap="handleTypeClick" class="titleinfo label-item  {{permIds.indexOf(idx) >= 0 ? 'active' : '' }}">
+                                {{item.title}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- POP END -->
+    </view>

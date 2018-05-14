@@ -1,0 +1,3 @@
+@import "./../../../components/zan-quantity.wxss";
+@import "./../../../components/zan-quantity.wxss";
+.footer-button{position:fixed;width:100%;bottom:0}.weui-navbar{position:fixed;z-index:2}.weui-cells{margin-top:-2rpx}.weui-cells .weui-cell{border-bottom:1rpx solid #d9d9d9}.weui-cells .weui-cell:before{display:none;border:0}.pop-box{position:fixed;left:0;bottom:-590rpx;width:100%;transition:all .4s;z-index:99}.pop-box.active{bottom:0}

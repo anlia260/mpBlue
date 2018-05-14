@@ -1,0 +1,44 @@
+
+  <view class="container page">
+
+     <view class="page__bd">
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                 <navigator url="me" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{ userInfo.logoUrl }}"/>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">{{ userInfo.nickName }}</view>
+                        <view class="weui-media-box__desc">{{ userInfo.adverInfo }}</view>
+                    </view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"/>
+                </navigator>
+            </view>
+        </view>
+
+        <view class="weui-panel weui-panel_access">
+          <navigator url="company" hover-class="weui-cell_active">
+            <view class="weui-panel__ft">
+                <view class="weui-cell weui-cell_access weui-cell_link">
+                    <view class="weui-cell__bd customFont">公司</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"/>
+                </view>
+            </view>
+            </navigator>
+        </view>
+
+        <view class="weui-panel weui-panel_access">
+            <navigator url="address" hover-class="weui-cell_active">
+              <view class="weui-panel__ft">
+                  <view class="weui-cell weui-cell_access weui-cell_link">
+                      <view class="weui-cell__bd customFont" style="white-space:nowrap;margin-right:10px;">地址</view>
+                      <view class="weui-cell__ft weui-cell__ft_in-access custom" style="white-space:nowrap;text-align:left;">{{ userInfo.parterAddress.province }}{{ userInfo.parterAddress.cityName }}{{ userInfo.parterAddress.address }}</view>
+                  </view>
+              </view>
+            </navigator>
+        </view>
+
+    </view>
+
+  </view>

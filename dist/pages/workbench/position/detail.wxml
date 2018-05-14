@@ -1,0 +1,61 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- form-start -->
+        <view class="zan-panel" style="margin-top:0px;">  
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">库位</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" disabled value="{{positionInfo.positionSn}}" class="weui-input" placeholder="库位"/>
+                        </view>
+                    </view>
+                </view> 
+        </view>
+        <!-- detail-start -->
+        <view class="zan-panel" style="padding-bottom:60px;">
+             
+            <view  wx:for="{{list}}" wx:key="{{deviceId}}">
+              <view class="weui-panel__bd zan-cell" style="padding:5px 15px 5px 15px;border-bottom: 1rpx solid #e5e5e5;">
+                <view class="thumb  ">
+                    <image class="img" src="../../../static/images/thing.png" mode="aspectFit"/>
+                </view>
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row" style="min-height:30px;">
+                        <view class="zan-card__right-col"> <button class="zan-btn zan-btn--small  zan-btn--plain" bindtap="unbind" style="font-size:13px" data-wpyunbind-a="{{item}}">解绑</button>      </view>
+                        <view class="zan-card__left-col "> {{item.deviceSn}}  </view>
+                    </view>  
+                </view>
+              </view>
+               
+            </view>  
+          </view>
+        <!-- list item-end --> 
+        <view class="weui-form-preview footer-button  bottom-box ">
+            <view class="weui-form-preview__ft">
+                <button bindtap="handleSubmit" class="weui-form-preview__btn weui-form-preview__btn_primary">增加容器</button>
+            </view>
+        </view>
+        <view class="zan-popup zan-popup--bottom {{ showPop ? 'zan-popup--show' : ''}}">
+            <view class="zan-popup__mask" bindtap="hidePop"/>
+            <view class="zan-popup__container">
+                <view class="zan-icon zan-icon-close" bindtap="hidePop"/>
+                <view class="zan-panel zan-panel--without-border">
+                    <view class="weui-cell zan-form__item">
+                        <input bindinput="code" value="{{barCode}}" class="zan-form__input zan-cell__bd" placeholder="输入容器编号"/>
+                    </view>
+                     <view style="margin-top:10px">
+                      <view class="zan-cell__bd zan-link zan-c-blue" bindtap="scanQr">切换成扫描模式</view>
+
+                    </view>
+                    <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+                        <button class="weui-btn   primary" bindtap="setContainer">确认</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>

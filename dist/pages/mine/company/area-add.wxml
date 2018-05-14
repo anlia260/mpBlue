@@ -1,0 +1,60 @@
+
+  <view class="container page">
+       
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+    <view class="page__bd">
+      <form bindsubmit="handleSubmit" bindreset="formReset">
+        <view class="weui-panel weui-panel_access">
+          <view class="weui-panel__bd">
+            <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">库区</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <picker bindchange="bindAbbrChange" range-key="value" range="{{AlphabetKeys}}">
+                    <input class="weui-input" disabled name="abbr" value="{{AlphabetKeys[addForm.abbr].value}}" placeholder="请选择库区"/>
+                  </picker>
+                </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">名称</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input" name="areaName" placeholder="请输入名称"/>
+                </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">类别</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <picker bindchange="bindPackageChange" range-key="value" range="{{AreaPackageType}}">
+                    <input class="weui-input" disabled name="packageType" value="{{AreaPackageType[packageTypeSort].value}}" placeholder="请选择类别"/>
+                  </picker>
+                </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">放置</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <picker bindchange="bindStorageChange" range-key="value" range="{{AreaStorageType}}">
+                    <input class="weui-input" disabled name="storageType" value="{{AreaStorageType[storageTypeSort].value}}" placeholder="请选择放置"/>
+                  </picker>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-form-preview footer-button">
+          <view class="weui-form-preview__ft">
+            <button formType="submit" class="weui-form-preview__btn weui-form-preview__btn_primary">保存</button>
+            <!--<button bindtap="handleBack" class="weui-form-preview__btn weui-form-preview__btn_default">取消</button>-->
+          </view>
+        </view>
+      </form>
+    </view>
+  </view>

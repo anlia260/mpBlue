@@ -1,0 +1,54 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+         
+        <!-- detail-start -->
+        <view class="zan-panel">
+            <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">放置于 </view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input name="length" disabled value="{{deviceInfo.deviceSn}}" class="weui-input" placeholder="容器"/>
+                        </view>
+                    </view>
+            </view> 
+              <view class="weui-panel__bd zan-cell" style="padding:5px 15px 5px 15px">
+                <view class="thumb  ">
+                    <image class="img" src="../../../static/images/thing.png" mode="aspectFit"/>
+                </view>
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row">
+                        <view class="zan-card__right-col"><text>{{item.num}}</text></view>
+                        <view class="zan-card__left-col "> {{goodInfo.goodName}}  </view>
+                    </view> 
+                    <view class="zan-card__detail-row zan-c-gray-darker">
+                        <view class="zan-card__right-col">   </view>
+                        <view class="zan-card__left-col"> 货号:{{goodInfo.goodNo}}  </view>
+                    </view> 
+                </view>
+              </view>
+              <view class="weui-panel__bd zan-cell" style=" border-bottom: 1rpx solid #e5e5e5;padding:5px  0 5px 0; ">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">入库数量</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                       
+  <view class="zan-quantity {{ $zanQuantity$size === 'small' ? 'zan-quantity--small' : '' }}">
+    <view class="zan-quantity__minus {{ $zanQuantity$quantity <= $zanQuantity$min ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $zanQuantity$componentId }}" data-quantity="{{ $zanQuantity$quantity }}" data-disabled="{{ $zanQuantity$quantity <= $zanQuantity$min }}" bindtap="$zanQuantity$handleZanQuantityMinus">-</view>
+    <input class="zan-quantity__text {{ $zanQuantity$min >= $zanQuantity$max ? 'zan-quantity--disabled' : '' }}" type="number" data-component-id="{{ $zanQuantity$componentId }}" data-min="{{ $zanQuantity$min }}" data-max="{{ $zanQuantity$max }}" value="{{ $zanQuantity$quantity }}" disabled="{{ $zanQuantity$min >= $zanQuantity$max }}" bindblur="$zanQuantity$handleZanQuantityBlur"/>
+    <view class="zan-quantity__plus {{ $zanQuantity$quantity >= $zanQuantity$max ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $zanQuantity$componentId }}" data-quantity="{{ $zanQuantity$quantity }}" data-disabled="{{ $zanQuantity$quantity >= $zanQuantity$max }}" bindtap="$zanQuantity$handleZanQuantityPlus">+</view>
+  </view>
+      
+                    </view>
+                </view> 
+              </view> 
+        </view>   
+        <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+                <button class="weui-btn   primary" bindtap="handleSubmit">确认下架</button>
+        </view> 
+    </view>

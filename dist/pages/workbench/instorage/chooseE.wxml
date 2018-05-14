@@ -1,0 +1,94 @@
+
+    <view class="container chooseE">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <!-- 显示信息 -->
+        <view class="weui-panel">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">{{goodInfo.goodName}}</view>
+                    <view class="weui-media-box__desc">货号：{{goodInfo.goodNo}}</view>
+                </view>
+            </view>
+        </view>
+        <!-- 表单-start -->
+        <form bindsubmit="handleSubmit" bindreset="formReset">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">入库数量</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        
+  <view class="zan-quantity {{ $zanQuantity$size === 'small' ? 'zan-quantity--small' : '' }}">
+    <view class="zan-quantity__minus {{ $zanQuantity$quantity <= $zanQuantity$min ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $zanQuantity$componentId }}" data-quantity="{{ $zanQuantity$quantity }}" data-disabled="{{ $zanQuantity$quantity <= $zanQuantity$min }}" bindtap="$zanQuantity$handleZanQuantityMinus">-</view>
+    <input class="zan-quantity__text {{ $zanQuantity$min >= $zanQuantity$max ? 'zan-quantity--disabled' : '' }}" type="number" data-component-id="{{ $zanQuantity$componentId }}" data-min="{{ $zanQuantity$min }}" data-max="{{ $zanQuantity$max }}" value="{{ $zanQuantity$quantity }}" disabled="{{ $zanQuantity$min >= $zanQuantity$max }}" bindblur="$zanQuantity$handleZanQuantityBlur"/>
+    <view class="zan-quantity__plus {{ $zanQuantity$quantity >= $zanQuantity$max ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $zanQuantity$componentId }}" data-quantity="{{ $zanQuantity$quantity }}" data-disabled="{{ $zanQuantity$quantity >= $zanQuantity$max }}" bindtap="$zanQuantity$handleZanQuantityPlus">+</view>
+  </view>
+
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">体积（长）</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input name="length" class="weui-input" placeholder="长cm"/>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">体积（宽）</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input name="width" class="weui-input" placeholder="宽cm"/>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">体积（高）</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input name="height" class="weui-input" placeholder="高cm"/>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">重量（千克）</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input name="weight" class="weui-input" placeholder="kg"/>
+                    </view>
+                    <view class="weui-cell__ft">X {{innum}}</view>
+                </view>
+            </view>
+            <view class="weui-form-preview footer-button">
+                <view class="weui-form-preview__ft">
+                    <button formType="submit" class="weui-form-preview__btn weui-form-preview__btn_primary">确认</button>
+                </view>
+            </view>
+        </form>
+        <!-- 表单-end -->
+        <!-- POP START -->
+        <view class="zan-popup zan-popup--bottom {{ showPop ? 'zan-popup--show' : ''}}">
+            <view class="zan-popup__mask" bindtap="hidePop"/>
+            <view class="zan-popup__container">
+                <view class="zan-icon zan-icon-close" bindtap="hidePop"/>
+                <view class="zan-panel zan-panel--without-border">
+                    <view class="weui-cell zan-form__item">
+                        <input bindinput="code" value="{{barCode}}" class="zan-form__input zan-cell__bd" placeholder="输入容器编号"/>
+                    </view>
+                     <view style="margin-top:10px">
+                      <view class="zan-cell__bd zan-link zan-c-blue" bindtap="scanQr">切换成扫描模式</view>
+
+                    </view>
+                    <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+                        <button class="weui-btn   primary" bindtap="setContainer">确认</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- POP END -->
+    <!-- 容器-end -->

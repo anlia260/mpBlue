@@ -1,0 +1,43 @@
+
+  <view class="container page">
+     <view class="page__bd">
+       <view  wx:for="{{cardList}}" wx:key="{{applyId}}">
+         <view class="zan-cell zan-form" bindtap="filterMsg" data-wpyfiltermsg-a="{{item}}">
+           <view class="zan-cell__hd zan-form__title" style="width: 65px;  ">
+             <image src="{{item.showLogo}}" style="width: 50px; height: 50px; display: block"/>
+           </view>
+           <view class="zan-cell__bd">
+               <view wx:if="{{item.fromUcId === userInfo.ucId}}">
+                   <view>{{item.toName}}</view>
+                   <view style="font-size: 13px;color: #888888;">{{item.toCompanyName}}</view>
+               </view>
+               <view wx:if="{{item.toUcId === userInfo.ucId}}">
+                   <view>{{item.fromName}}</view>
+                   <view style="font-size: 13px;color: #888888;">{{item.fromCompanyName}}</view>
+               </view>
+           </view>
+           <view class="zan-cell__ft">
+             <!-- 发出去的消息 -->
+             <view wx:if="{{item.fromUcId === userInfo.ucId}}" style=" font-size: 13px;color: #888888;">
+               <view wx:if="{{item.status === 1}}"> 等待验证 </view>
+               <view wx:elif="{{item.status === 2}}"> 已新增 </view>
+               <view wx:else/>
+             </view>
+             <!-- 接收到的 -->
+             <view wx:elif="{{item.toUcId === userInfo.ucId}}">
+               <view wx:if="{{item.status === 1}}">
+                 <button class="zan-btn zan-btn--mini zan-btn--primary " style=" font-size: 13px ">同意</button>
+               </view>
+               <view style=" font-size: 13px;color: #888888;" wx:elif="{{item.status === 2}}"> 已新增 </view>
+               <view wx:else/>
+             </view>
+           </view>
+         </view>
+       </view>
+       <view class="weui-form-preview footer-button">
+         <view class="weui-form-preview__ft">
+           <view bindtap="handleSubmit" class="weui-form-preview__btn weui-form-preview__btn_primary">新增</view>
+         </view>
+       </view>
+    </view>
+  </view>

@@ -1,0 +1,21 @@
+
+  <view class="container page">
+     <view class="page__bd">
+        <view class="weui-cells__title">编辑项</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+              <view class="weui-label">备注名</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{note}}" bindinput="inputNote" placeholder="请输入备注"/>
+            </view>
+          </view>
+        </view>
+        <view class="page__bd page__bd_spacing" style="margin-top:60px;">
+                <button bindtap="handleSubmit" class="weui-btn primary">保存</button>
+        </view>
+        
+    </view>
+
+  </view>

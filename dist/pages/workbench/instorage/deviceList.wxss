@@ -1,0 +1,3 @@
+@import "./../../../components/zan-loadmore.wxss";
+@import "./../../../components/zan-toptips.wxss";
+.footer-button{position:fixed;width:calc(100% - 20px);bottom:0;left:0}.zan-icon{font-size:24px;color:#ccc}.zan-link{text-align:center;padding:10px;font-size:14px;text-decoration:underline}.zan-link>view{text-decoration:underline}.zan-select-list{padding:10px 0}.zan-select-list .zan-cell::after{border:0}.zan-bord{border-bottom:1px solid #ccc}.zan-cell__bd.active{color:red}.panneItle{padding:2px 15px 2px 15px}

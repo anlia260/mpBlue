@@ -1,0 +1,2 @@
+@import "./../../../../components/zan-toptips.wxss";
+.list .desc-input-max-length{max-width:220px}.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}.clearfix{display:block}.zan-icon-checked{color:#ccc;font-size:16px;margin-right:10px;vertical-align:center}.zan-icon-checked.active{color:#38f}.sort-title{position:fixed;width:100%;top:0;left:0;z-index:22;color:#999;background:#f8f8f8;font-size:14px;padding:16px 0 2px 12px;border-bottom:1px solid #e5e5e5}

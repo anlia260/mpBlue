@@ -1,0 +1,42 @@
+
+    <view class="container">
+        <view class="zan-panel zan-panel-title">
+            <view class="weui-flex">
+                <view class="weui-flex__item--two"><view class="placeholder">明细</view></view>
+                <view class="weui-flex__item"><view class="placeholder">工作量</view></view>
+                <view class="weui-flex__item--two"><view class="placeholder">完成时间</view></view>
+            </view>
+        </view>
+        <view class="zan-panel">
+            <view class="zan-cell">
+                <view class="weui-flex__item--two"><view class="item-column">
+                    <view class="item-column-title">12盎司塑料杯</view>
+                    <view class="item-column-ft">0002-20008</view>
+                </view></view>
+                <view class="weui-flex__item"><view class="item-column">5件</view></view>
+                <view class="weui-flex__item--two"><view class="item-column">
+                    <view class="item-column-ft">
+                        2017-10-10
+                        下午 5:30
+                    </view>
+                </view></view>
+            </view>
+            <view class="zan-cell">
+                <view class="weui-flex__item--two"><view class="item-column">
+                    <view class="item-column-title">12盎司塑料杯</view>
+                    <view class="item-column-ft">0002-20008</view>
+                </view></view>
+                <view class="weui-flex__item"><view class="item-column">5件</view></view>
+                <view class="weui-flex__item--two"><view class="item-column">
+                    <view class="item-column-ft">
+                        2017-10-10
+                        下午 5:30
+                    </view>
+                </view></view>
+            </view>
+            <view  wx:if="{{recordList.length === 0}}" class="weui-loadmore ">
+                <view class="weui-loadmore__tips ">暂无数据</view>
+            </view>
+        </view>
+
+    </view>

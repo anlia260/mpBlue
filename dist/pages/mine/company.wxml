@@ -1,0 +1,30 @@
+
+  <view class="container page">
+    <view class="page__bd">
+      <view class="weui-panel weui-panel_access">
+        <view  wx:if="{{campanyList.length > 0 }}">
+          <view wx:for="{{campanyList}}" wx:key="companyId" class="weui-panel__bd weui-cell cellinfo" bindtap="viewDetail" data-wpyviewdetail-a="{{item}}">
+            <view class="weui-media-box weui-media-box_appmsg  cellinfo">
+              <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                <image class="weui-media-box__thumb" src="{{ item.logo }}"/>
+              </view>
+              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                <view class="weui-media-box__title">{{ item.companyName }}</view>
+              </view>
+             <!-- <view class="weui-cell__ft weui-cell__ft_in-access"></view> -->
+            </view>
+          </view>
+        </view>
+        <view  wx:elif="{{ campanyList.length === 0 && type !=1}}">
+          <view class="weui-loadmore weui-loadmore_line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-form-preview footer-button">
+        <view class="weui-form-preview__ft">
+          <navigator url="company/add" class="weui-form-preview__btn weui-form-preview__btn_primary">新增公司</navigator>   
+        </view>
+      </view>
+    </view>
+  </view>

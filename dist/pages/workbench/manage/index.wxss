@@ -1,0 +1,2 @@
+@import "./../../../components/zan-toptips.wxss";
+.zan-icon{margin-right:10px;font-size:18px}

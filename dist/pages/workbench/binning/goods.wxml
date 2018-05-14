@@ -1,0 +1,95 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">{{info.packageBox.goodNo ? '包装箱:'+info.packageBox.goodNo : '包装详情：'}}  </view>
+                   
+                </view>
+                 <view class="weui-cell">
+                    <view class="weui-cell__bd">装箱数量：{{totalNum}}件</view> 
+                </view>
+            </view>
+        </view>
+        <!-- detail-start -->
+        <view class="zan-panel"  wx:for="{{packageDetail}}" wx:key="detailId">
+            <view class="zan-card card-item">
+                <view class="thumb zan-card__thumb">
+                    <image class="img" src="{{item.goodUrl || '../../../static/images/thing.png'}}" mode="aspectFit"/>
+                </view>
+                <view class="zan-card__detail ">
+                    <view class="zan-card__detail-row">
+                        <view class="zan-card__right-col">{{item.num  }}件</view>
+                        <view class="zan-card__left-col zan-ellipsis">
+                            {{item.goodName}}
+                        </view>
+                    </view>
+                    <view class="zan-card__detail-row zan-c-gray-darker">
+                        <view class="zan-card__right-col" wx:if="{{item.status ==1}}">
+                            <button class="zan-btn zan-btn--mini zan-btn--danger zan-btn--plain titleinfo" bindtap="showFixPop" data-wpyshowfixpop-a="{{item}}">差异记录</button>
+                        </view>
+                        <view class="zan-card__left-col">
+                            货号：{{item.goodNo}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- list item-end -->
+
+        <!-- POP START -->
+        <view class="zan-popup zan-popup--bottom {{ showFix ? 'zan-popup--show' : ''}}">
+            <view class="zan-popup__mask" bindtap="hideFixPop"/>
+            <view class="zan-popup__container  ">
+                <view class="zan-panel zan-panel--without-border">
+                    <view class="zan-icon zan-icon-close" bindtap="hideFixPop"/>
+                    <view class="size-label-box">
+                        <view class="label custom">差异类型</view>
+                        <view class="label-item-box">
+                            <view data-id="1" bindtap="handleTypeClick" class="label-item {{fixType == 1 ? 'active' : '' }} custom">
+                                漏检
+                            </view>
+                            <view data-id="2" bindtap="handleTypeClick" class="label-item {{fixType == 2 ? 'active' : '' }} custom" style="margin-left:10px">
+                                多拣
+                            </view>
+                        </view>
+                    </view>
+
+                    <view style="margin-bottom:0;padding-bottom:0;" class="buy-num-box"  wx:if="{{fixType == 2}}">
+                        <view wx:if="{{deviceInfo.areaName}}" class="num-label custom">已选择放置容器：{{deviceInfo.deviceSn}}，所在库区：{{deviceInfo.areaName}}</view>
+                        <view wx:else class="num-label custom">扫描容器</view>
+                        <view wx:if="{{!deviceInfo.areaName}}" class="num-box">
+                            <button bindtap="scanQr" class="zan-btn zan-btn--small zan-btn--primary">扫码</button>
+                        </view>
+                    </view>
+
+                    <view class="buy-num-box">
+                        <view class="num-label custom">差异数量</view>
+                        <view class="num-box">
+                            
+  <view class="zan-quantity {{ $zanQuantity$size === 'small' ? 'zan-quantity--small' : '' }}">
+    <view class="zan-quantity__minus {{ $zanQuantity$quantity <= $zanQuantity$min ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $zanQuantity$componentId }}" data-quantity="{{ $zanQuantity$quantity }}" data-disabled="{{ $zanQuantity$quantity <= $zanQuantity$min }}" bindtap="$zanQuantity$handleZanQuantityMinus">-</view>
+    <input class="zan-quantity__text {{ $zanQuantity$min >= $zanQuantity$max ? 'zan-quantity--disabled' : '' }}" type="number" data-component-id="{{ $zanQuantity$componentId }}" data-min="{{ $zanQuantity$min }}" data-max="{{ $zanQuantity$max }}" value="{{ $zanQuantity$quantity }}" disabled="{{ $zanQuantity$min >= $zanQuantity$max }}" bindblur="$zanQuantity$handleZanQuantityBlur"/>
+    <view class="zan-quantity__plus {{ $zanQuantity$quantity >= $zanQuantity$max ? 'zan-quantity--disabled' : '' }}" data-component-id="{{ $zanQuantity$componentId }}" data-quantity="{{ $zanQuantity$quantity }}" data-disabled="{{ $zanQuantity$quantity >= $zanQuantity$max }}" bindtap="$zanQuantity$handleZanQuantityPlus">+</view>
+  </view>
+
+                        </view>
+                    </view>
+
+                    <view class="popup-join-btn" bindtap="fixNum">
+                        确认
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- POP END --> 
+        
+        <view class="bottom-box" bindtap="doPackage">
+        <view class="weui-form-preview footer-button">
+                <view class="weui-form-preview__btn weui-form-preview__btn_primary">装箱</view>
+              </view>
+        </view> 
+    </view>

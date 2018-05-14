@@ -1,0 +1,2 @@
+@import "./../../../components/zan-tab.wxss";
+.icon{margin-right:12px;vertical-align:middle;width:35px;height:35px}

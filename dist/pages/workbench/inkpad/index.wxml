@@ -1,0 +1,19 @@
+
+    <view class="container">
+        <view class="weui-panel weui-panel_access "  wx:for="{{menu}}" wx:for-index="index" wx:key="unique">
+            <view class="weui-panel__ft" wx:for="{{item}}" wx:for-index="itemindex" wx:key="unique">
+                <navigator url="{{item.url}}">
+                    <view class="weui-cell weui-cell_access weui-cell_link" style="{{ index === 0? 'padding:3px 15px 3px 8px':'' }}">
+                        <view wx:if="{{item.icon != ''}}" class="weui-cell__hd">
+                            <image class="icon" src="{{item.icon }}"/>
+                        </view>
+                        <view class="weui-cell__bd customFont">{{item.title}}</view>
+                        <view wx:if="{{ index !== 0 }}" class="weui-cell__ft weui-cell__ft_in-access "/>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+    </view>

@@ -1,0 +1,28 @@
+
+    <view class="container">
+        
+  <view animation="{{$zanToptips$animationData}}" class="zan-toptips {{$zanToptips$topTips.type}}"> {{ $zanToptips$topTips.content || "NULL" }} </view>
+
+        <view class="zan-panel">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                    <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                        <image src="{{info.work.workMap.qrCode}}" style="width: 50px; height: 50px; display: block"/>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <view>{{info.work.workMap.packageNum}}号箱</view>
+                        <view style="font-size: 13px;color: #888888;">送往：{{info.work.workMap.addressName}}</view>
+                        <view style="font-size: 13px;color: #888888;">{{info.work.workMap.address}}</view>
+                    </view>
+                </view>
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <view style="font-size: 13px;color: #888888;">出货口：{{info.work.workMap.entranceName}}</view>
+                    </view>
+                </view> 
+            </view>
+        </view>
+        <view class="page__bd page__bd_spacing" style="margin-top:50px;">
+            <button class="weui-btn  primary" bindtap="print">打印</button>
+        </view> 
+    </view>
